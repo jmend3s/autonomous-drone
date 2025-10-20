@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<robot name="drone" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:arg name="use_sim" default="true" />
+
+<!--    <xacro:include filename="$(find drone_description)/urdf/core_structure.xacro" />-->
+
+<!--    <xacro:if value="$(arg use_sim)">-->
+<!--        <xacro:include filename="$(find drone_description)/urdf/drone.gazebo.xacro" />-->
+<!--    </xacro:if>-->
+
+    <link name="base_link">
+        <visual>
+            <origin xyz="0 0 0.1305"/>
+            <geometry>
+                <mesh filename="package://drone_description/meshes/frame.stl"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <link name="landing_gear">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://drone_description/meshes/landing_gear.stl"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="frame_to_landing_gear" type="fixed">
+        <parent link="base_link"/>
+        <child link="landing_gear"/>
+        <origin rpy="0 0 0" xyz="0 0 0.1305"/>
+    </joint>
+
+    <link name="motor">
+        <visual>
+            <origin xyz="-0.1591 -0.1591 0.1675"/>
+            <geometry>
+                <mesh filename="package://drone_description/meshes/motor.stl"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="frame_to_motor" type="fixed">
+        <parent link="base_link"/>
+        <child link="motor"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+    </joint>
+
+    <link name="propeller">
+        <visual>
+            <origin xyz="-0.1591 -0.1591 0.19752"/>
+            <geometry>
+                <mesh filename="package://drone_description/meshes/propeller.stl"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="motor_to_propeller" type="fixed">
+        <parent link="motor"/>
+        <child link="propeller"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+    </joint>
+
+</robot>
