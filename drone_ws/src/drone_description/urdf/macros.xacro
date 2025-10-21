@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="motor_assembly" params="number x y">
+        <link name="motor${number}">
+            <visual>
+                <origin xyz="0 0 0"/>
+                <geometry>
+                    <mesh filename="package://drone_description/meshes/motor.stl"/>
+                </geometry>
+            </visual>
+        </link>
+
+        <joint name="frame_to_motor${number}" type="fixed">
+            <parent link="base_link"/>
+            <child link="motor${number}"/>
+            <origin xyz="${x} ${y} 0.0385"/>
+        </joint>
+
+        <link name="propeller${number}">
+            <visual>
+                <origin xyz="0 0 0"/>
+                <geometry>
+                    <mesh filename="package://drone_description/meshes/propeller.stl"/>
+                </geometry>
+            </visual>
+        </link>
+
+        <joint name="motor_to_propeller${number}" type="fixed">
+            <parent link="motor${number}"/>
+            <child link="propeller${number}"/>
+            <origin xyz="0 0 0.0295"/>
+        </joint>
+    </xacro:macro>
+
+</robot>

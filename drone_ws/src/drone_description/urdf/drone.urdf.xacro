@@ -8,10 +8,11 @@
 <!--    <xacro:if value="$(arg use_sim)">-->
 <!--        <xacro:include filename="$(find drone_description)/urdf/drone.gazebo.xacro" />-->
 <!--    </xacro:if>-->
+        <xacro:include filename="$(find drone_description)/urdf/macros.xacro" />
 
     <link name="base_link">
         <visual>
-            <origin xyz="0 0 0.1305"/>
+            <origin xyz="0 0 0"/>
             <geometry>
                 <mesh filename="package://drone_description/meshes/frame.stl"/>
             </geometry>
@@ -30,37 +31,12 @@
     <joint name="frame_to_landing_gear" type="fixed">
         <parent link="base_link"/>
         <child link="landing_gear"/>
-        <origin rpy="0 0 0" xyz="0 0 0.1305"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
     </joint>
 
-    <link name="motor">
-        <visual>
-            <origin xyz="-0.1591 -0.1591 0.1675"/>
-            <geometry>
-                <mesh filename="package://drone_description/meshes/motor.stl"/>
-            </geometry>
-        </visual>
-    </link>
-
-    <joint name="frame_to_motor" type="fixed">
-        <parent link="base_link"/>
-        <child link="motor"/>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
-    </joint>
-
-    <link name="propeller">
-        <visual>
-            <origin xyz="-0.1591 -0.1591 0.19752"/>
-            <geometry>
-                <mesh filename="package://drone_description/meshes/propeller.stl"/>
-            </geometry>
-        </visual>
-    </link>
-
-    <joint name="motor_to_propeller" type="fixed">
-        <parent link="motor"/>
-        <child link="propeller"/>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
-    </joint>
+    <xacro:motor_assembly number="1" x="0.1591" y="0.1591"/>
+    <xacro:motor_assembly number="2" x="-0.1591" y="0.1591"/>
+    <xacro:motor_assembly number="3" x="0.1591" y="-0.1591"/>
+    <xacro:motor_assembly number="4" x="-0.1591" y="-0.1591"/>
 
 </robot>
