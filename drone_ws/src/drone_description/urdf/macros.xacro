@@ -9,6 +9,18 @@
                     <mesh filename="package://drone_description/meshes/motor.stl"/>
                 </geometry>
             </visual>
+            <colision>
+                <origin xyz="${x} ${y} 0.0385"/>
+                <geometry>
+                    <box size="0.225 0.225 0.135"/>
+                </geometry>
+            </colision>
+            <inertial>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <mass value="0.047"/>
+                <inertia ixx="5.7464844e-06" ixy="0.0" ixz="0.0"
+                        iyy="5.7464844e-06" iyz="0.0" izz="4.4429688e-06"/>
+            </inertial>
         </link>
 
         <joint name="frame_to_motor${number}" type="fixed">
@@ -24,6 +36,12 @@
                     <mesh filename="package://drone_description/meshes/propeller.stl"/>
                 </geometry>
             </visual>
+            <inertial>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <mass value="0.008"/>
+                <inertia ixx="1.00e-07" ixy="0.0" ixz="0.0"
+                        iyy="1.00e-07" iyz="0.0" izz="2.7526827e-05"/>
+            </inertial>
         </link>
 
         <joint name="motor_to_propeller${number}" type="fixed">
