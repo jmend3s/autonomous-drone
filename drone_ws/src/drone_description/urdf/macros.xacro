@@ -9,12 +9,12 @@
                     <mesh filename="package://drone_description/meshes/motor.stl"/>
                 </geometry>
             </visual>
-            <colision>
-                <origin xyz="${x} ${y} 0.0385"/>
+            <collision>
+                <origin xyz="0 0 0.0135" rpy="0 0 0"/>
                 <geometry>
-                    <box size="0.225 0.225 0.135"/>
+                    <box size="0.0225 0.0225 0.027"/>
                 </geometry>
-            </colision>
+            </collision>
             <inertial>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
                 <mass value="0.047"/>
@@ -36,6 +36,12 @@
                     <mesh filename="package://drone_description/meshes/propeller.stl"/>
                 </geometry>
             </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <box size="0.265 0.04 0.01"/>
+                </geometry>
+            </collision>
             <inertial>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
                 <mass value="0.008"/>
