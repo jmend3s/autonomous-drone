@@ -7,6 +7,7 @@ USER="jmendes"
 
 echo "alias build=\"cd /home/$USER/$WORKDIR && colcon build && source ~/.bashrc\"" >> /home/$USER/.bashrc
 echo "alias $ROBOT_NAME=\"bash ~/$WORKDIR/src/drone_bringup/scripts/drone_gazebo.sh\"" >> /home/$USER/.bashrc
+echo "alias create-pkg=\"ros2 pkg create --license BSD-3-Clause --build-type ament_cmake --maintainer-email jmendes.3595@gmail.com --maintainer-name jmendes\"" >> /home/$USER/.bashrc
 
 echo "export GZ_SIM_RESOURCE_PATH=/home/$USER/$WORKDIR/src/drone_gazebo/models" >> /home/$USER/.bashrc
 
