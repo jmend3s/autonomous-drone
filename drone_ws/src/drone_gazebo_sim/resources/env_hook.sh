@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+export GZ_SIM_SYSTEM_PLUGIN_PATH="${COLCON_PREFIX_PATH}/lib:$GZ_SIM_SYSTEM_PLUGIN_PATH"

@@ -12,16 +12,17 @@ RUN apt-get update \
 # Install necessary ROS 2 control packages
 RUN apt-get update \
   && apt-get install -y \
+    ros-jazzy-joint-state-publisher \
+    ros-jazzy-joint-state-publisher-gui \
+    ros-jazzy-moveit \
+    ros-jazzy-ros-gz \
+    ros-jazzy-ros-gz-sim \
     ros-jazzy-gz-ros2-control \
     ros-jazzy-gz-ros2-control-demos \
     ros-jazzy-ros2-control \
     ros-jazzy-ros2-controllers \
-    ros-jazzy-ros-gz \
-    ros-jazzy-moveit \
-    ros-jazzy-joint-state-publisher \
-    ros-jazzy-joint-state-publisher-gui \
-    ros-jazzy-urdf-tutorial \
     ros-jazzy-rmw-cyclonedds-cpp \
+    ros-jazzy-urdf-tutorial \
   && rm -rf /var/lib/apt/lists/*
 
 # Create a non-root user, ensuring no UID/GID conflicts

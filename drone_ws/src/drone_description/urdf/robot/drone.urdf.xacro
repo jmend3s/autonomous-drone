@@ -3,10 +3,10 @@
 
     <xacro:arg name="use_sim" default="true" />
 
-<!--    <xacro:if value="$(arg use_sim)">-->
-<!--        <xacro:include filename="$(find drone_description)/urdf/drone.gazebo.xacro" />-->
-<!--    </xacro:if>-->
-        <xacro:include filename="$(find drone_description)/urdf/macros.xacro" />
+    <xacro:if value="$(arg use_sim)">
+        <xacro:include filename="$(find drone_description)/urdf/control/drone.gazebo.xacro" />
+    </xacro:if>
+    <xacro:include filename="$(find drone_description)/urdf/robot/macros.xacro" />
 
     <link name="base_link">
         <visual>
