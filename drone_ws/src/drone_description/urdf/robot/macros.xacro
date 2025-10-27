@@ -8,6 +8,9 @@
                 <geometry>
                     <mesh filename="package://drone_description/meshes/motor.stl"/>
                 </geometry>
+                <material name="bright_orange">
+                    <color rgba="1.0 0.45 0.05 1.0"/>
+                </material>
             </visual>
             <collision>
                 <origin xyz="0 0 0.0135" rpy="0 0 0"/>
@@ -35,6 +38,9 @@
                 <geometry>
                     <mesh filename="package://drone_description/meshes/propeller.stl"/>
                 </geometry>
+                <material name="matte_black">
+                    <color rgba="0.05 0.05 0.05 1.0"/>
+                </material>
             </visual>
             <collision>
                 <origin xyz="0 0 0" rpy="0 0 0"/>

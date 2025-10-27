@@ -21,6 +21,9 @@
             <geometry>
                 <mesh filename="package://drone_description/meshes/frame.stl"/>
             </geometry>
+            <material name="blue_body">
+                <color rgba="0.0 0.2 1.0 1.0"/>
+            </material>
         </visual>
         <collision>
             <origin xyz="0 0 0.0115" rpy="0 0 0"/>
@@ -42,6 +45,9 @@
             <geometry>
                 <mesh filename="package://drone_description/meshes/landing_gear.stl"/>
             </geometry>
+            <material name="dark_gray">
+                <color rgba="0.15 0.15 0.15 1.0"/>
+            </material>
         </visual>
         <collision>
             <origin xyz="0 0 -0.065" rpy="0 0 0"/>
