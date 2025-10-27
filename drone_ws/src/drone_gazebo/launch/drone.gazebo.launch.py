@@ -16,7 +16,7 @@ def generate_launch_description():
     pkg_share_description = FindPackageShare(package=pkg_name_description).find(pkg_name_description)
     pkg_ros_gz_sim = FindPackageShare(package='ros_gz_sim').find('ros_gz_sim')
 
-    xacro_file_path = os.path.join(pkg_share_description, 'urdf', 'drone.urdf.xacro')
+    xacro_file_path = os.path.join(pkg_share_description, 'urdf', 'robot', 'drone.urdf.xacro')
 
     drone_resource_parent = os.path.dirname(pkg_share_description)
 
@@ -41,7 +41,7 @@ def generate_launch_description():
             os.path.join(pkg_ros_gz_sim, 'launch', 'gz_sim.launch.py')
         ),
         # '-r' means start paused; 'empty.sdf' is the standard world
-        launch_arguments=[('gz_args', ' -r empty.sdf')]
+        launch_arguments=[('gz_args', ' -r -v 4 empty.sdf')]
     )
 
     start_gazebo_ros_spawner_cmd = Node(
@@ -49,10 +49,9 @@ def generate_launch_description():
         executable='create',
         output='screen',
         arguments=[
-            '-topic', 'robot_description',  # Read URDF from /robot_description topic
+            '-topic', 'robot_description',
             '-name', 'my_drone',
             '-allow_renaming', 'true',
-            # Spawn slightly above the ground plane
             '-z', '0.1'
         ]
     )

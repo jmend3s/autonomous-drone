@@ -13,19 +13,34 @@ CONTAINER_NAME="drone-jazzy-dev"
 IMAGE_NAME="drone-jazzy-dev"
 WORKSPACE_DIR="drone_ws"
 WORKSPACE_PATH="$PWD/$WORKSPACE_DIR"
-USER="jmendes"
+USER_NAME="jmendes"
+USER_ID=$(id -u)
+GROUP_ID=$(id -g)
+
+# Create an XDG runtime dir if missing (fixes Gazebo XDG warnings)
+export XDG_RUNTIME_DIR=/tmp/runtime-$USER_NAME
+mkdir -p $XDG_RUNTIME_DIR
+chmod 700 $XDG_RUNTIME_DIR
 
 if [ "$(docker ps -q -f name=^/${CONTAINER_NAME}$)" ]; then
     echo "Container ${CONTAINER_NAME} is already running."
 else
   docker run -itd --rm \
-    --user $USER \
+    --name $CONTAINER_NAME \
+    --hostname $CONTAINER_NAME \
+    --gpus all \
+    --user ${USER_ID}:${GROUP_ID} \
     --network=host \
     --ipc=host \
-    -v "$WORKSPACE_PATH":/home/$USER/$WORKSPACE_DIR \
+    -e DISPLAY=$DISPLAY \
+    -e QT_X11_NO_MITSHM=1 \
+    -e XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR \
+    -v "$WORKSPACE_PATH":/home/$USER_NAME/$WORKSPACE_DIR \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-    --env=DISPLAY \
-    --name $CONTAINER_NAME \
+    -v ~/.Xauthority:/home/$USER_NAME/.Xauthority:rw \
+    -v /dev/dri:/dev/dri \
+    --env="NVIDIA_DRIVER_CAPABILITIES=all" \
+    --env="NVIDIA_VISIBLE_DEVICES=all" \
     $IMAGE_NAME
 fi
 

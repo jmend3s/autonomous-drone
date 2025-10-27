@@ -18,8 +18,12 @@ set_property(TARGET TeensyEmulator PROPERTY CXX_STANDARD 17)
 target_include_directories(TeensyEmulator PRIVATE
   ${GZ-SIM_INCLUDE_DIRS}
 )
+
+find_package(gz-plugin2 REQUIRED COMPONENTS register)
+
 target_link_libraries(TeensyEmulator
   ${GZ-SIM_LIBRARIES}
+  gz-plugin2::register
   gz-msgs10::gz-msgs10
   gz-transport13::gz-transport13
   rclcpp::rclcpp
@@ -27,11 +31,6 @@ target_link_libraries(TeensyEmulator
 
 install(TARGETS TeensyEmulator
   DESTINATION lib
-)
-
-install(PROGRAMS
-    resources/env_hook.sh
-    DESTINATION share/${PROJECT_NAME}/hook
 )
 
 if(BUILD_TESTING)

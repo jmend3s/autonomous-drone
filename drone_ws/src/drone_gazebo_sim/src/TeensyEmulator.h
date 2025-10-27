@@ -2,6 +2,7 @@
 #define __DRONE_TEENSY_EMULATOR_H__
 
 #include <gz/sim/System.hh>
+#include <gz/sim/Model.hh>
 
 
 namespace drone_gazebo_sim
@@ -22,7 +23,7 @@ namespace drone_gazebo_sim
         void PostUpdate(const gz::sim::UpdateInfo& _info,
                         const gz::sim::EntityComponentManager& _ecm) override;
     private:
-        gz::sim::Entity _modelEntity;
+        gz::sim::Entity _modelEntity{gz::sim::kNullEntity};
         double _myGain{1.0};
     };
 }

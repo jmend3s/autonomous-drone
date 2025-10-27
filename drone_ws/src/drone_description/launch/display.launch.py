@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
@@ -15,7 +16,7 @@ def generate_launch_description():
 
     model_arg = DeclareLaunchArgument(
         name="model",
-        default_value=os.path.join(get_package_share_directory("drone_description"), "urdf", "drone.urdf.xacro"),
+        default_value=os.path.join(get_package_share_directory("drone_description"), "urdf", "robot", "drone.urdf.xacro"),
         description="Absolute path to robot URDF file"
     )
 
