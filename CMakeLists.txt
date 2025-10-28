@@ -3,4 +3,4 @@ project(drone)
 
 add_subdirectory(drone_ws/src/drone_description)
 add_subdirectory(drone_ws/src/drone_gazebo)
-add_subdirectory(drone_ws/src/drone_gazebo_sim)
+add_subdirectory(drone_ws/src/drone_gazebo_plugins)

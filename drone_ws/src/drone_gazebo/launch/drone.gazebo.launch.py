@@ -41,7 +41,7 @@ def generate_launch_description():
             os.path.join(pkg_ros_gz_sim, 'launch', 'gz_sim.launch.py')
         ),
         # '-r' means start paused; 'empty.sdf' is the standard world
-        launch_arguments=[('gz_args', ' -r -v 4 empty.sdf')]
+        launch_arguments=[('gz_args', ' -r -v 3 empty.sdf')]
     )
 
     start_gazebo_ros_spawner_cmd = Node(

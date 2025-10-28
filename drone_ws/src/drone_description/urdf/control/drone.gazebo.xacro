@@ -2,7 +2,7 @@
 <robot name="drone" xmlns:xacro="http://www.ros.org/wiki/xacro">
     <gazebo>
         <plugin filename="libTeensyEmulator.so" name="TeensyEmulator">
-            <gain>150.0</gain>
+            <update_rate>500</update_rate>
         </plugin>
     </gazebo>
 </robot>
