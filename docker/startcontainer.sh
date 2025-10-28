@@ -3,6 +3,8 @@
 # This script is made to open a new terminal with two tabs for a container
 # It's made to work with the terminator terminal and uses the
 # xdotool to manipulate terminal commands
+# If one of these tools is not installed just comment the last part of the script and run
+# After that you can access the container normally 
 
 # sudo apt install terminator
 # sudo apt install xdotool
@@ -17,7 +19,6 @@ USER_NAME="jmendes"
 USER_ID=$(id -u)
 GROUP_ID=$(id -g)
 
-# Create an XDG runtime dir if missing (fixes Gazebo XDG warnings)
 export XDG_RUNTIME_DIR=/tmp/runtime-$USER_NAME
 mkdir -p $XDG_RUNTIME_DIR
 chmod 700 $XDG_RUNTIME_DIR
