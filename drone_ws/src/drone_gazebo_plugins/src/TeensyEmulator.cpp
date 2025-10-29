@@ -6,7 +6,7 @@
 #include <gz/sim/Util.hh>
 
 
-void drone_gazebo_sim::TeensyEmulator::Configure(gz::sim::Entity const& entity,
+void DroneTeensyEmulator::TeensyEmulator::Configure(gz::sim::Entity const& entity,
     std::shared_ptr<sdf::Element const> const& sdf, gz::sim::EntityComponentManager& ecm,
     gz::sim::EventManager& eventMgr)
 {
@@ -17,9 +17,9 @@ void drone_gazebo_sim::TeensyEmulator::Configure(gz::sim::Entity const& entity,
     gz::sim::Model const model(_entity);
     auto const jointEntities =  model.Joints(ecm);
 
-    for (auto const& joint_entity : jointEntities)
+    for (u_int i = 0; i < jointEntities.size(); i++)
     {
-        _motorJoints.emplace_back(joint_entity);
+        _motorJoints[i] = gz::sim::Joint(jointEntities[i]);
     }
 
     if (sdf->HasElement("update_rate"))
@@ -36,22 +36,22 @@ void drone_gazebo_sim::TeensyEmulator::Configure(gz::sim::Entity const& entity,
     gzmsg << "[TeensyEmulator] Configure() done" << std::endl;
 }
 
-void drone_gazebo_sim::TeensyEmulator::PreUpdate(const gz::sim::UpdateInfo& _info,
+void DroneTeensyEmulator::TeensyEmulator::PreUpdate(const gz::sim::UpdateInfo& _info,
     gz::sim::EntityComponentManager& _ecm)
 {
 }
 
-void drone_gazebo_sim::TeensyEmulator::PostUpdate(const gz::sim::UpdateInfo& _info,
+void DroneTeensyEmulator::TeensyEmulator::PostUpdate(const gz::sim::UpdateInfo& _info,
     const gz::sim::EntityComponentManager& _ecm)
 {
 }
 
 
 GZ_ADD_PLUGIN(
-    drone_gazebo_sim::TeensyEmulator,
+    DroneTeensyEmulator::TeensyEmulator,
     gz::sim::System,
-    drone_gazebo_sim::TeensyEmulator::ISystemConfigure,
-    drone_gazebo_sim::TeensyEmulator::ISystemPreUpdate,
-    drone_gazebo_sim::TeensyEmulator::ISystemPostUpdate
+    DroneTeensyEmulator::TeensyEmulator::ISystemConfigure,
+    DroneTeensyEmulator::TeensyEmulator::ISystemPreUpdate,
+    DroneTeensyEmulator::TeensyEmulator::ISystemPostUpdate
 )
-GZ_ADD_PLUGIN_ALIAS(drone_gazebo_sim::TeensyEmulator, "TeensyEmulator")
+GZ_ADD_PLUGIN_ALIAS(DroneTeensyEmulator::TeensyEmulator, "TeensyEmulator")

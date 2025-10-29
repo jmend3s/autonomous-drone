@@ -7,7 +7,7 @@
 #include <rclcpp/rclcpp.hpp>
 
 
-namespace drone_gazebo_sim
+namespace DroneTeensyEmulator
 {
     class TeensyEmulator
         : public gz::sim::System
@@ -16,6 +16,7 @@ namespace drone_gazebo_sim
         , public gz::sim::ISystemPostUpdate
     {
     public:
+
         void Configure(gz::sim::Entity const& entity,
                         std::shared_ptr<sdf::Element const> const& sdf,
                         gz::sim::EntityComponentManager& ecm,
@@ -26,9 +27,15 @@ namespace drone_gazebo_sim
                         gz::sim::EntityComponentManager const& _ecm) override;
     private:
         gz::sim::Entity _entity{gz::sim::kNullEntity};
-        std::vector<gz::sim::Joint> _motorJoints;
+        std::array<gz::sim::Joint, 6> _motorJoints;
 
         rclcpp::Node::SharedPtr _node;
+
+        gz::math::Vector3d _position;
+        gz::math::Vector3d _velocity;
+        gz::math::Vector3d _angularVelocity;
+        gz::math::Quaternion<double> _orientation;
+        double _thrustCommand;
 
         double _controllPeriod;
         double _updateRate;
