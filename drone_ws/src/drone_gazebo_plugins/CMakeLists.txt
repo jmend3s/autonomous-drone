@@ -6,7 +6,9 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 find_package(ament_cmake REQUIRED)
+find_package(gz-math8 REQUIRED)
 find_package(gz-msgs10 REQUIRED)
+find_package(gz-plugin2 REQUIRED COMPONENTS register)
 find_package(gz-transport13 REQUIRED)
 find_package(gz-sim8 REQUIRED)
 find_package(rclcpp REQUIRED)
@@ -23,9 +25,6 @@ find_package(gz-plugin2 REQUIRED COMPONENTS register)
 
 target_link_libraries(TeensyEmulator
   ${GZ-SIM_LIBRARIES}
-  gz-plugin2::register
-  gz-msgs10::gz-msgs10
-  gz-transport13::gz-transport13
   rclcpp::rclcpp
 )
 

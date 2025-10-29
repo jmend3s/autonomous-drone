@@ -3,6 +3,9 @@
     <gazebo>
         <plugin filename="libTeensyEmulator.so" name="TeensyEmulator">
             <update_rate>500</update_rate>
+            <damping>0.1</damping>
+            <gravity>9.81</gravity>
+            <thrust_command>9.81</thrust_command>
         </plugin>
     </gazebo>
 </robot>
