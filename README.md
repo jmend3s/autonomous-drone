@@ -12,7 +12,7 @@
  - Sensors & sensor fusion
  - Simulations
  - Hardware emulation
- - Real hardware
+ - Hardware integration
  - Relation simulation - reality 
  - Aerial robotics
  - Path planning
@@ -63,10 +63,17 @@
 
 ### Building locally 
 
-Clone the repository locally ```git clone git@github.com:jmend3s/autonomous-drone.git``` <br>
-If using another IDE ignore the directory ```clion_scripts``` <br>
-Build the docker image ```sudo docker -t drone-jazzy-dev autonomous-drone/docker/``` <br>
-If using Terminator terminal the container can be used by running ```./autonomous-drone/docker/startcontainer.sh``` **refer to the documentation inside the script** <br>
-Build and source workspace ```colcon build && . install/setup.bash``` or using the alias ```build``` (This alias also cd's to the workspace) <br>
-Launch Rviz2 ```ros2 launch drone_description drone.display.launch.py``` <br>
-Launch Gazebo ```ros2 launch drone_gazebo drone.gazebo.launch.py```
+If using another IDE ignore the directory *clion_scripts* <br>
+
+ - Clone the repository <br>
+    - ```git clone git@github.com:jmend3s/autonomous-drone.git``` <br>
+ - Build the docker image <br>
+    - ```sudo docker -t drone-jazzy-dev autonomous-drone/docker/``` <br>
+ - If using Terminator terminal the container can be used by running <br>
+    - ```./autonomous-drone/docker/startcontainer.sh``` **refer to the documentation inside the script to use without Terminator and xdotool** <br>
+ - Build and source workspace <br>
+    - ```colcon build && . install/setup.bash``` or using the alias ```build``` (This alias also cd's to the workspace) <br>
+ - Launch Rviz2 <br>
+    - ```ros2 launch drone_description drone.display.launch.py``` <br>
+ - Launch Gazebo <br>
+    - ```ros2 launch drone_gazebo drone.gazebo.launch.py```
