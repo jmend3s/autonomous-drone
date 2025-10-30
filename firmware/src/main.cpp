@@ -1,20 +1,32 @@
 #include <Arduino.h>
-#include <Servo.h>
 
-Servo esc1;
+#include <SPI.h>
+#include <nRF24L01.h>
+#include <RF24.h>
 
-void setup() {
-  esc1.attach(2);  // PWM-capable pin on Teensy 4.1
-  esc1.writeMicroseconds(1000); // idle signal
+
+RF24 radio(7,8);
+
+byte constexpr address[6] = "00001";
+
+void setup()
+{
+    Serial.begin(115200);
+    radio.begin();
+    radio.openReadingPipe(0, address);
+    radio.setPALevel(RF24_PA_MIN);
+    radio.startListening();
+
+    Serial.println("Comms started");
 }
 
-void loop() {
-  for (int us = 1000; us <= 2000; us += 10) {
-    esc1.writeMicroseconds(us);
-    delay(20);
-  }
-  for (int us = 2000; us >= 1000; us -= 10) {
-    esc1.writeMicroseconds(us);
-    delay(20);
-  }
+void loop()
+{
+    if (radio.available())
+    {
+        char text[32] = "";
+        radio.read(&text, sizeof(text));
+        if (text[0] == 'H')
+            Serial.println(text);
+    }
 }
