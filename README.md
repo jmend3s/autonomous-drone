@@ -4,76 +4,93 @@
 ![OS](https://img.shields.io/ubuntu/v/ubuntu-wallpapers/noble?color=6A0DAD)
 ![ROS_2 Jazzy](https://img.shields.io/ros/v/jazzy/rclcpp)
 ![Gazebo Iron 8.9.0](https://img.shields.io/badge/Gazebo_Iron-8.9.0-lightgrey)
-![PlatformIO Core 6.1.16](https://img.shields.io/badge/PlatformIO_Core-6.1.16-E37B0D?logo=platformio&logoColor=white)
+![CLion Version](https://img.shields.io/badge/CLion-2025.2.4-007ACC)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-### Goals <br>
+This repository contains the ROS 2 simulation, description, and development environment for the Autonomous Drone project. <br>
+An IoT-enabled autonomous drone platform for surveillance, search and rescue missions. Integrating ROS2, Gazebo simulation and onboard flight control
 
- - Deeper dive into robotics related mathematics and physics
- - Sensors & sensor fusion
- - Simulations
- - Hardware emulation
- - Hardware integration
- - Relation simulation - reality 
- - Aerial robotics
- - Path planning
- - SLAM navigation 
- - Computer vision
+---
+### Project Objectives
 
-### Architecture
+This project aims to develop a modular and autonomous drone platform with the following goals:
+- **Full simulation to hardware workflow** — seamless transition from Gazebo testing to real hardware.
+- **Modular ROS 2 → firmware architecture** — separation between high-level nodes and low-level control loops.
+- **Real time sensor fusion and control** — integrate IMU, GPS and camera data.
+- **Autonomous navigation and vision integration** — waypoint following, obstacle avoidance and SLAM.
+- **Extensible design for research** — a flexible base for robotics experiments.
 
-    *Comming soon*
+---
+ ### System Overview
 
-### Tools <br>
+```
++------------------+             +-------------------+
+|  Raspberry Pi 5  |  <------->  |  Teensy 4.1 MCU   |
+|  ROS2 Nodes      |             |  Flight Controller|
++------------------+             +-------------------+
+        |                               |
+        v                               v
+   +----------+                   +------------+
+   | Gazebo   |                   | ESC / IMU  |
+   | Simulator|                   | Interfaces |
+   +----------+                   +------------+ 
+```
 
- - **Hardware**
-   - Quadcopter (F450)
-   - Raspberry pi 5
-   - Teensy 4.1
-   - IMU (BNO086) 
-   - BLDC's
- 
-   <br>
- 
- - **Software**
-   - Docker
-     - ROS2 Jazzy
-     - ROS controllers
-     - Gazebo Iron
-     - Gazebo plugins
-   - PlatformIO
+---
+### Project Structure
 
-### What is done
+```
+clion_scripts/                # Clion realated scripts for ROS 2 integration
+docker/                       # Dockerfile and helper scripts
+docs/                         # Diagrams and documentation
+droneROS2_ws/
+├── src/
+│ ├── drone_description/      # URDF and meshes
+│ ├── drone_gazebo/           # Simulation plugins and worlds
+│ └── drone_gazebo_plugins/   # Custom Gazebo plugins
+flight-controller/            # Teensy firmware (submodule)
+printables/                   # 3D models
+```
 
- - Docker environment setup
- - ROS2 environment
- - URDF description
- - Display and Gazebo launch files
- - PlatformIO environment for firmware
- - Electronics testing platform built
+---
+### Quick Start 
 
-### Next steps
+ - Clone the repository ```git clone git@github.com:jmend3s/autonomous-drone.git``` <br>
+ - Build the docker image ```sudo docker build -t drone-jazzy-dev autonomous-drone/docker/``` <br>
+ - Start container ```./autonomous-drone/docker/startcontainer.sh``` **refer to the documentation inside the script to use without Terminator and xdotool** <br>
+ - Build and source workspace ```colcon build && . install/setup.bash``` or use the alias ```build``` (which also moves to the workspace root) <br>
+ - Launch RViz2 ```ros2 launch drone_description drone.display.launch.py``` <br>
+ - Launch Gazebo ```ros2 launch drone_gazebo drone.gazebo.launch.py```
 
- - *Gazebo simulation*
-   - Low level microcontroller emulation plugin for Gazebo
-   - ROS2 controllers for motors and sensors
- - *Hardware*
-   - Electronics testing (motors, IMU, microcontroller)
-   - Controller design and building
-   - PCB's
+---
+### Teensy Flight Control
 
-### Building locally 
+The [Teensy Flight Controller](https://github.com/jmend3s/flight-controller)
+submodule handles low-level motor control, sensor reading, and hardware communication.
+It interfaces with the ROS 2 companion computer through serial and can also be emulated
+inside Gazebo using a custom plugin (in development).
 
-If using another IDE ignore the directory *clion_scripts* <br>
+---
+### Current Status
 
- - Clone the repository <br>
-    - ```git clone git@github.com:jmend3s/autonomous-drone.git``` <br>
- - Build the docker image <br>
-    - ```sudo docker -t drone-jazzy-dev autonomous-drone/docker/``` <br>
- - If using Terminator terminal the container can be used by running <br>
-    - ```./autonomous-drone/docker/startcontainer.sh``` **refer to the documentation inside the script to use without Terminator and xdotool** <br>
- - Build and source workspace <br>
-    - ```colcon build && . install/setup.bash``` or using the alias ```build``` (This alias also cd's to the workspace) <br>
- - Launch Rviz2 <br>
-    - ```ros2 launch drone_description drone.display.launch.py``` <br>
- - Launch Gazebo <br>
-    - ```ros2 launch drone_gazebo drone.gazebo.launch.py```
+_Current milestone checklist_
+
+- [x] Docker development environment setup
+- [x] ROS 2 Jazzy workspace created
+- [x] Drone URDF and Gazebo world defined
+- [ ] Gazebo plugin for Teensy flight controller emulation
+- [ ] ROS 2 controller for BLDC motors
+- [ ] Integration of IMU data in simulation
+- [ ] Real hardware testing and calibration
+
+---
+### Hardware <br>
+
+
+- Frame: F450 quadcopter  
+- Companion computer: Raspberry Pi 5  
+- Flight controller: [Teensy Flight Controller](https://github.com/jmend3s/flight-controller)  
+- Motors: A2212 1400 KV BLDC × 4  
+- ESCs: 40 A × 4
+- Propellers: 8045 × 4
+- Battery: LiPo 3S 5200 mAh  
