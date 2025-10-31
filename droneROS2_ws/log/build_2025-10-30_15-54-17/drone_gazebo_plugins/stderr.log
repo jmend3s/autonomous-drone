@@ -1,0 +1,16 @@
+[01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:[m[K In member function ‘[01m[Kvirtual void DroneTeensyEmulator::TeensyEmulator::[01;32m[KConfigure[m[K(const gz::sim::v8::Entity&, const std::shared_ptr<const sdf::v14::Element>&, gz::sim::v8::EntityComponentManager&, gz::sim::v8::EventManager&)[m[K’:
+[01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:30:86:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kecm[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   30 | td::shared_ptr<sdf::Element const> const& sdf, [01;35m[Kgz::sim::EntityComponentManager& ecm[m[K,
+      |                                                [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~[m[K
+
+[01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:31:28:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KeventMgr[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   31 |     [01;35m[Kgz::sim::EventManager& eventMgr[m[K)
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:[m[K In member function ‘[01m[Kvirtual void DroneTeensyEmulator::TeensyEmulator::[01;32m[KPostUpdate[m[K(const gz::sim::v8::UpdateInfo&, const gz::sim::v8::EntityComponentManager&)[m[K’:
+[01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:66:81:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kinfo[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   66 | oid DroneTeensyEmulator::TeensyEmulator::PostUpdate([01;35m[Kconst gz::sim::UpdateInfo& info[m[K,
+      |                                                     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+
+[01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:67:44:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kecm[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   67 |     [01;35m[Kconst gz::sim::EntityComponentManager& ecm[m[K)
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~[m[K

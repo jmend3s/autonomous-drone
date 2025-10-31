@@ -1,0 +1,41 @@
+[0.011s] Invoking command in '/home/jmendes/drone_ws/build/drone_gazebo_plugins': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/jmendes/drone_ws/build/drone_gazebo_plugins -- -j8 -l8
+[0.085s] [ 50%] [32mBuilding CXX object CMakeFiles/TeensyEmulator.dir/src/TeensyEmulator.cpp.o[0m
+[2.215s] [01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:[m[K In member function ‘[01m[Kvirtual void DroneTeensyEmulator::TeensyEmulator::[01;32m[KConfigure[m[K(const gz::sim::v8::Entity&, const std::shared_ptr<const sdf::v14::Element>&, gz::sim::v8::EntityComponentManager&, gz::sim::v8::EventManager&)[m[K’:
+[2.215s] [01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:30:86:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kecm[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.215s]    30 | td::shared_ptr<sdf::Element const> const& sdf, [01;35m[Kgz::sim::EntityComponentManager& ecm[m[K,
+[2.215s]       |                                                [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~[m[K
+[2.215s] 
+[2.215s] [01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:31:28:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KeventMgr[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.215s]    31 |     [01;35m[Kgz::sim::EventManager& eventMgr[m[K)
+[2.215s]       |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[2.222s] [01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:[m[K In member function ‘[01m[Kvirtual void DroneTeensyEmulator::TeensyEmulator::[01;32m[KPostUpdate[m[K(const gz::sim::v8::UpdateInfo&, const gz::sim::v8::EntityComponentManager&)[m[K’:
+[2.223s] [01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:66:81:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kinfo[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.223s]    66 | oid DroneTeensyEmulator::TeensyEmulator::PostUpdate([01;35m[Kconst gz::sim::UpdateInfo& info[m[K,
+[2.223s]       |                                                     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[2.223s] 
+[2.223s] [01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:67:44:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kecm[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.223s]    67 |     [01;35m[Kconst gz::sim::EntityComponentManager& ecm[m[K)
+[2.223s]       |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~[m[K
+[3.704s] [100%] [32m[1mLinking CXX shared library libTeensyEmulator.so[0m
+[3.926s] [100%] Built target TeensyEmulator
+[3.934s] Invoked command in '/home/jmendes/drone_ws/build/drone_gazebo_plugins' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/jmendes/drone_ws/build/drone_gazebo_plugins -- -j8 -l8
+[3.935s] Invoking command in '/home/jmendes/drone_ws/build/drone_gazebo_plugins': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/jmendes/drone_ws/build/drone_gazebo_plugins
+[3.941s] -- Install configuration: ""
+[3.942s] -- Installing: /home/jmendes/drone_ws/install/drone_gazebo_plugins/lib/libTeensyEmulator.so
+[3.943s] -- Set non-toolchain portion of runtime path of "/home/jmendes/drone_ws/install/drone_gazebo_plugins/lib/libTeensyEmulator.so" to ""
+[3.943s] -- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/ament_index/resource_index/package_run_dependencies/drone_gazebo_plugins
+[3.943s] -- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/ament_index/resource_index/parent_prefix_path/drone_gazebo_plugins
+[3.944s] -- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/environment/ament_prefix_path.sh
+[3.944s] -- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/environment/ament_prefix_path.dsv
+[3.944s] -- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/environment/path.sh
+[3.944s] -- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/environment/path.dsv
+[3.944s] -- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/local_setup.bash
+[3.944s] -- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/local_setup.sh
+[3.944s] -- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/local_setup.zsh
+[3.944s] -- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/local_setup.dsv
+[3.944s] -- Installing: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/package.dsv
+[3.944s] -- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/ament_index/resource_index/packages/drone_gazebo_plugins
+[3.945s] -- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/cmake/drone_gazebo_pluginsConfig.cmake
+[3.945s] -- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/cmake/drone_gazebo_pluginsConfig-version.cmake
+[3.945s] -- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/package.xml
+[3.947s] Invoked command in '/home/jmendes/drone_ws/build/drone_gazebo_plugins' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/jmendes/drone_ws/build/drone_gazebo_plugins

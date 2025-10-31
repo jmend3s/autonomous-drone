@@ -1,0 +1,22 @@
+[0.013s] Invoking command in '/home/jmendes/drone_ws/build/drone_gazebo_plugins': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/jmendes/drone_ws/build/drone_gazebo_plugins -- -j8 -l8
+[0.062s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.247s] [31mCMake Error at CMakeLists.txt:9 (find_package):
+[0.247s]   By not providing "Findgz-common6.cmake" in CMAKE_MODULE_PATH this project
+[0.247s]   has asked CMake to find a package configuration file provided by
+[0.247s]   "gz-common6", but CMake did not find one.
+[0.247s] 
+[0.247s]   Could not find a package configuration file provided by "gz-common6" with
+[0.247s]   any of the following names:
+[0.247s] 
+[0.247s]     gz-common6Config.cmake
+[0.248s]     gz-common6-config.cmake
+[0.248s] 
+[0.248s]   Add the installation prefix of "gz-common6" to CMAKE_PREFIX_PATH or set
+[0.248s]   "gz-common6_DIR" to a directory containing one of the above files.  If
+[0.248s]   "gz-common6" provides a separate development package or SDK, be sure it has
+[0.248s]   been installed.
+[0.248s] 
+[0.248s] [0m
+[0.248s] -- Configuring incomplete, errors occurred!
+[0.249s] gmake: *** [Makefile:267: cmake_check_build_system] Error 1
+[0.251s] Invoked command in '/home/jmendes/drone_ws/build/drone_gazebo_plugins' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/jmendes/drone_ws/build/drone_gazebo_plugins -- -j8 -l8

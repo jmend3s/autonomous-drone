@@ -1,0 +1,4 @@
+Invoking command in '/home/jmendes/drone_ws/build/drone_gazebo_plugins': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/jmendes/drone_ws/build/drone_gazebo_plugins -- -j8 -l8
+Invoked command in '/home/jmendes/drone_ws/build/drone_gazebo_plugins' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/jmendes/drone_ws/build/drone_gazebo_plugins -- -j8 -l8
+Invoking command in '/home/jmendes/drone_ws/build/drone_gazebo_plugins': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/jmendes/drone_ws/build/drone_gazebo_plugins
+Invoked command in '/home/jmendes/drone_ws/build/drone_gazebo_plugins' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/jmendes/drone_ws/build/drone_gazebo_plugins

@@ -1,0 +1,18 @@
+[100%] Built target TeensyEmulator
+-- Install configuration: ""
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/lib/libTeensyEmulator.so
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/ament_index/resource_index/package_run_dependencies/drone_gazebo_plugins
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/ament_index/resource_index/parent_prefix_path/drone_gazebo_plugins
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/environment/ament_prefix_path.sh
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/environment/path.sh
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/environment/path.dsv
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/local_setup.bash
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/local_setup.sh
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/local_setup.zsh
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/local_setup.dsv
+-- Installing: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/package.dsv
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/ament_index/resource_index/packages/drone_gazebo_plugins
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/cmake/drone_gazebo_pluginsConfig.cmake
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/cmake/drone_gazebo_pluginsConfig-version.cmake
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/package.xml

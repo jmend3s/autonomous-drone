@@ -1,0 +1,39 @@
+[ 50%] [32mBuilding CXX object CMakeFiles/TeensyEmulator.dir/src/TeensyEmulator.cpp.o[0m
+[01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:[m[K In member function ‘[01m[Kvirtual void drone_gazebo_sim::TeensyEmulator::[01;32m[KConfigure[m[K(const gz::sim::v8::Entity&, const std::shared_ptr<const sdf::v14::Element>&, gz::sim::v8::EntityComponentManager&, gz::sim::v8::EventManager&)[m[K’:
+[01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:11:28:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KeventMgr[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   11 |     [01;35m[Kgz::sim::EventManager& eventMgr[m[K)
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:[m[K In member function ‘[01m[Kvirtual void drone_gazebo_sim::TeensyEmulator::[01;32m[KPreUpdate[m[K(const gz::sim::v8::UpdateInfo&, gz::sim::v8::EntityComponentManager&)[m[K’:
+[01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:39:77:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[K_info[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   39 | void drone_gazebo_sim::TeensyEmulator::PreUpdate([01;35m[Kconst gz::sim::UpdateInfo& _info[m[K,
+      |                                                  [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:40:38:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[K_ecm[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   40 |     [01;35m[Kgz::sim::EntityComponentManager& _ecm[m[K)
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:[m[K In member function ‘[01m[Kvirtual void drone_gazebo_sim::TeensyEmulator::[01;32m[KPostUpdate[m[K(const gz::sim::v8::UpdateInfo&, const gz::sim::v8::EntityComponentManager&)[m[K’:
+[01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:44:78:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[K_info[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   44 | void drone_gazebo_sim::TeensyEmulator::PostUpdate([01;35m[Kconst gz::sim::UpdateInfo& _info[m[K,
+      |                                                   [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:45:44:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[K_ecm[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   45 |     [01;35m[Kconst gz::sim::EntityComponentManager& _ecm[m[K)
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[100%] [32m[1mLinking CXX shared library libTeensyEmulator.so[0m
+[100%] Built target TeensyEmulator
+-- Install configuration: ""
+-- Installing: /home/jmendes/drone_ws/install/drone_gazebo_plugins/lib/libTeensyEmulator.so
+-- Set non-toolchain portion of runtime path of "/home/jmendes/drone_ws/install/drone_gazebo_plugins/lib/libTeensyEmulator.so" to ""
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/ament_index/resource_index/package_run_dependencies/drone_gazebo_plugins
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/ament_index/resource_index/parent_prefix_path/drone_gazebo_plugins
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/environment/ament_prefix_path.sh
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/environment/path.sh
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/environment/path.dsv
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/local_setup.bash
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/local_setup.sh
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/local_setup.zsh
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/local_setup.dsv
+-- Installing: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/package.dsv
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/ament_index/resource_index/packages/drone_gazebo_plugins
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/cmake/drone_gazebo_pluginsConfig.cmake
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/cmake/drone_gazebo_pluginsConfig-version.cmake
+-- Up-to-date: /home/jmendes/drone_ws/install/drone_gazebo_plugins/share/drone_gazebo_plugins/package.xml
