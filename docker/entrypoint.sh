@@ -1,7 +1,11 @@
 #!/bin/bash
+# ========================================================================
+# Autonomous-Drone Jazzy Development Container Entrypoint
+# ========================================================================
+
 set -e
 
-WORKDIR="drone_ws"
+WORKDIR="ros2_ws"
 ROBOT_NAME="drone"
 USER="jmendes"
 

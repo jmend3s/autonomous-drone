@@ -1,3 +1,8 @@
+# ========================================================================
+# ROS 2 JAZZY DEVELOPMENT ENVIRONMENT
+# Based on the official Jazzy build image
+# ========================================================================
+
 FROM osrf/ros:jazzy-desktop-full
 
 RUN apt-get update \
@@ -29,7 +34,7 @@ RUN apt-get update \
 ARG USERNAME=jmendes
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
-ARG WORKDIR=drone_ws
+ARG WORKDIR=ros2_ws
 
 RUN if getent passwd $USER_UID >/dev/null; then \
       userdel -r -f $(getent passwd $USER_UID | cut -d: -f1); \

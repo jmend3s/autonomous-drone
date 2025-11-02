@@ -2,9 +2,6 @@
 build
 .idea
 
-drone_ws/log
-drone_ws/build
-drone_ws/install
-
-firmware/.idea
-firmware/.pio
+ros2_ws/log
+ros2_ws/build
+ros2_ws/install
