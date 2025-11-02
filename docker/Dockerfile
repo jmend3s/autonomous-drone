@@ -1,6 +1,5 @@
 # ========================================================================
 # ROS 2 JAZZY DEVELOPMENT ENVIRONMENT
-# Based on the official Jazzy build image
 # ========================================================================
 
 FROM osrf/ros:jazzy-desktop-full

@@ -56,11 +56,13 @@ printables/                   # 3D models
 ### Quick Start 
 
  - Clone the repository ```git clone git@github.com:jmend3s/autonomous-drone.git``` <br>
- - Build the docker image ```sudo docker build -t drone-jazzy-dev autonomous-drone/docker/``` <br>
- - Start container ```./autonomous-drone/docker/startcontainer.sh``` **refer to the documentation inside the script to use without Terminator and xdotool** <br>
- - Build and source workspace ```colcon build && . install/setup.bash``` or use the alias ```build``` (which also moves to the workspace root) <br>
+ - Go to project root ```cd autonomous-drone/```
+ - Build the docker image ```./docker/build.sh``` <br>
+ - Start container ```./docker/run.sh``` **refer to the documentation on the script to use without Terminator and xdotool** <br>
+ - **Inside the container** build and source workspace ```colcon build && . install/setup.bash``` or use the alias ```build``` (which also moves to the workspace root) <br>
  - Launch RViz2 ```ros2 launch drone_description drone.display.launch.py``` <br>
- - Launch Gazebo ```ros2 launch drone_gazebo drone.gazebo.launch.py```
+ - Launch Gazebo ```ros2 launch drone_gazebo drone.gazebo.launch.py``` <br>
+**Be sure to run all the Docker scripts on the project's root**
 
 ---
 ### Teensy Flight Control
