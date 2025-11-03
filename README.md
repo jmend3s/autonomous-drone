@@ -43,13 +43,13 @@ This project aims to develop a modular and autonomous drone platform with the fo
 clion_scripts/                # Clion realated scripts for ROS 2 integration
 docker/                       # Dockerfile and helper scripts
 docs/                         # Diagrams and documentation
+flight-controller/            # Teensy firmware (submodule)
+printables/                   # 3D models
 ros2_ws/
 ├── src/
 │ ├── drone_description/      # URDF and meshes
 │ ├── drone_gazebo/           # Simulation plugins and worlds
 │ └── drone_gazebo_plugins/   # Custom Gazebo plugins
-flight-controller/            # Teensy firmware (submodule)
-printables/                   # 3D models
 ```
 
 ---
@@ -81,11 +81,9 @@ inside Gazebo using a custom plugin (in development).
 - [ ] Gazebo plugin for Teensy flight controller emulation
 - [ ] ROS 2 controller for BLDC motors
 - [ ] Integration of IMU data in simulation
-- [ ] Real hardware testing and calibration
 
 ---
 ### Hardware <br>
-
 
 - Frame: F450 quadcopter  
 - Companion computer: Raspberry Pi 5  

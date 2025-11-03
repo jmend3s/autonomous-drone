@@ -1,6 +1,0 @@
-Invoking command in '/home/jmendes/drone_ws/build/drone_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/jmendes/drone_ws/src/drone_gazebo -DCMAKE_INSTALL_PREFIX=/home/jmendes/drone_ws/install/drone_gazebo
-Invoked command in '/home/jmendes/drone_ws/build/drone_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/jmendes/drone_ws/src/drone_gazebo -DCMAKE_INSTALL_PREFIX=/home/jmendes/drone_ws/install/drone_gazebo
-Invoking command in '/home/jmendes/drone_ws/build/drone_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/jmendes/drone_ws/build/drone_gazebo -- -j8 -l8
-Invoked command in '/home/jmendes/drone_ws/build/drone_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/jmendes/drone_ws/build/drone_gazebo -- -j8 -l8
-Invoking command in '/home/jmendes/drone_ws/build/drone_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/jmendes/drone_ws/build/drone_gazebo
-Invoked command in '/home/jmendes/drone_ws/build/drone_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/jmendes/drone_ws/build/drone_gazebo

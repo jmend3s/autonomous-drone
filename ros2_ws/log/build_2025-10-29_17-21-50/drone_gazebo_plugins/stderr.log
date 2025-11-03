@@ -1,8 +1,0 @@
-In file included from [01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.cpp:2[m[K:
-[01m[K/home/jmendes/drone_ws/src/drone_gazebo_plugins/src/TeensyEmulator.h:6:10:[m[K [01;31m[Kfatal error: [m[Kgz/common/Time.hh: No such file or directory
-    6 | #include [01;31m[K<gz/common/Time.hh>[m[K
-      |          [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
-compilation terminated.
-gmake[2]: *** [CMakeFiles/TeensyEmulator.dir/build.make:76: CMakeFiles/TeensyEmulator.dir/src/TeensyEmulator.cpp.o] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/TeensyEmulator.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2

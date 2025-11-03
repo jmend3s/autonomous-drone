@@ -1,10 +1,13 @@
 
-#ifndef __DRONE_TEENSY_EMULATOR_H__
-#define __DRONE_TEENSY_EMULATOR_H__
+#ifndef __TEENSY_EMULATOR_H__
+#define __TEENSY_EMULATOR_H__
+
+#include "CommunicationNode.h"
 
 #include <gz/sim/System.hh>
 #include <gz/sim/Joint.hh>
 
+#include <geometry_msgs/msg/twist.hpp>
 #include <rclcpp/rclcpp.hpp>
 
 
@@ -27,16 +30,14 @@ namespace DroneTeensyEmulator
 
     private:
         void extractValuesFromSdf(std::shared_ptr<sdf::Element const> const& sdf);
-        void startCommunicationNode();
 
         gz::sim::Entity _entity;
+        CommunicationNode _communicationNode;
 
         gz::math::Vector3d _position;
-        gz::math::Vector3d _velocity;
+        gz::math::Vector3d _linearVelocity;
         gz::math::Vector3d _angularVelocity;
         gz::math::Quaternion<double> _orientation;
-
-        rclcpp::Node::SharedPtr _node;
 
         double _damping;
         double _gravity;

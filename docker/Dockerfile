@@ -51,13 +51,12 @@ RUN apt-get update \
   && chmod 0440 /etc/sudoers.d/$USERNAME \
   && rm -rf /var/lib/apt/lists/*
 
-COPY entrypoint.sh /entrypoint.sh
-
-WORKDIR /home/$USERNAME/$WORKDIR/
-
 RUN echo "source /opt/ros/jazzy/setup.bash" >> /home/$USERNAME/.bashrc \
   && echo "source /home/$USERNAME/$WORKDIR/install/setup.bash" >> /home/$USERNAME/.bashrc \
   && chown $USERNAME:$USERNAME /home/$USERNAME/.bashrc
 
+COPY entrypoint.sh /entrypoint.sh
+USER $USERNAME
+WORKDIR /home/$USERNAME/$WORKDIR/
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 CMD ["bash"]

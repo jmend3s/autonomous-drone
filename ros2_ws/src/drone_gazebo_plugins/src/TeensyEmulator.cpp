@@ -9,10 +9,9 @@
 DroneTeensyEmulator::TeensyEmulator::TeensyEmulator()
     : _entity(gz::sim::kNullEntity)
     , _position(0, 0, 1.0)
-    , _velocity(0, 0, 0)
+    , _linearVelocity(0, 0, 0)
     , _angularVelocity(0, 0, 0)
     , _orientation(0, 0, 0)
-    , _node(nullptr)
     , _damping(0.0)
     , _gravity(0.0)
     , _thrustCommand(0.0)
@@ -31,7 +30,6 @@ void DroneTeensyEmulator::TeensyEmulator::Configure(gz::sim::Entity const& entit
     gz::sim::EventManager& eventMgr)
 {
     extractValuesFromSdf(sdf);
-    startCommunicationNode();
     _entity = entity;
     _controlPeriod /= _updateRate;
 
@@ -43,10 +41,15 @@ void DroneTeensyEmulator::TeensyEmulator::PreUpdate(const gz::sim::UpdateInfo& i
 {
     if (!info.paused)
     {
+        auto command = _communicationNode.read();
+
+        _linearVelocity = { command.linear.x, command.linear.y, command.linear.z };
+        _angularVelocity = { command.angular.x, command.angular.y, command.angular.z };
+
         if (auto const dt = std::chrono::duration<double>(info.dt).count();
             dt > 0.0)
         {
-            _position += _velocity * dt;
+            _position += _linearVelocity * dt;
 
             if (auto const angle = _angularVelocity.Length() * dt;
                 angle > 1e-6)
@@ -81,23 +84,6 @@ void DroneTeensyEmulator::TeensyEmulator::extractValuesFromSdf(std::shared_ptr<s
     {
         member = sdf->HasElement(sdfElement) ? sdf->Get<double>(sdfElement) : 0.0;
     }
-
-    if (sdf->HasElement("angular_velocity"))
-    {
-        _angularVelocity = sdf->Get<gz::math::Vector3d>("angular_velocity");
-    }
-    if (sdf->HasElement("velocity"))
-    {
-        _velocity = sdf->Get<gz::math::Vector3d>("velocity");
-    }
-}
-
-void DroneTeensyEmulator::TeensyEmulator::startCommunicationNode()
-{
-    int constexpr argc = 0;
-    char** const argv = nullptr;
-    rclcpp::init(argc, argv);
-    _node = rclcpp::Node::make_shared("teensy_emulator");
 }
 
 GZ_ADD_PLUGIN(
