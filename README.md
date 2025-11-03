@@ -43,7 +43,7 @@ This project aims to develop a modular and autonomous drone platform with the fo
 clion_scripts/                # Clion realated scripts for ROS 2 integration
 docker/                       # Dockerfile and helper scripts
 docs/                         # Diagrams and documentation
-droneROS2_ws/
+ros2_ws/
 ├── src/
 │ ├── drone_description/      # URDF and meshes
 │ ├── drone_gazebo/           # Simulation plugins and worlds
@@ -74,8 +74,6 @@ inside Gazebo using a custom plugin (in development).
 
 ---
 ### Current Status
-
-_Current milestone checklist_
 
 - [x] Docker development environment setup
 - [x] ROS 2 Jazzy workspace created
