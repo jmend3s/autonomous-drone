@@ -69,6 +69,7 @@ void DroneTeensyEmulator::TeensyEmulator::PreUpdate(const gz::sim::UpdateInfo& i
 void DroneTeensyEmulator::TeensyEmulator::PostUpdate(const gz::sim::UpdateInfo& info,
     const gz::sim::EntityComponentManager& ecm)
 {
+    _communicationNode.publish(_position, _orientation, _linearVelocity, _angularVelocity);
 }
 
 void DroneTeensyEmulator::TeensyEmulator::extractValuesFromSdf(std::shared_ptr<sdf::Element const> const& sdf)
