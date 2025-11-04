@@ -1,24 +1,46 @@
-import os
+#!/usr/bin/env python3
+
 from ament_index_python.packages import get_package_share_directory
+
 from launch import LaunchDescription
-from launch.actions import AppendEnvironmentVariable
-from launch.actions import IncludeLaunchDescription
+from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument, AppendEnvironmentVariable
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import Command
+from launch.substitutions import Command, LaunchConfiguration
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
+
+import os
 
 
 def generate_launch_description():
 
-    pkg_name_description = 'drone_description'
+    pkg_name = 'drone_gazebo'
+    pkg_share = get_package_share_directory(pkg_name)
 
-    pkg_share_description = FindPackageShare(package=pkg_name_description).find(pkg_name_description)
+
+    world = LaunchConfiguration('world')
+    use_sim_time = LaunchConfiguration('use_sim_time')
+
+    declare_world_cmd = DeclareLaunchArgument(
+        name='world',
+        default_value=os.path.join(pkg_share, 'worlds', 'empty.world'),
+        description='Path to simulated world'
+    )
+
+    declare_sim_time_cmd = DeclareLaunchArgument(
+        name='use_sim_time',
+        default_value='true',
+        description='Flag to enable use_sim_time for simulation'
+    )
+
+    pkg_description_name = 'drone_description'
+
+    pkg_description_share = FindPackageShare(package=pkg_description_name).find(pkg_description_name)
     pkg_ros_gz_sim = FindPackageShare(package='ros_gz_sim').find('ros_gz_sim')
 
-    xacro_file_path = os.path.join(pkg_share_description, 'urdf', 'robot', 'drone.urdf.xacro')
+    xacro_file_path = os.path.join(pkg_description_share, 'urdf', 'robot', 'drone.urdf.xacro')
 
-    drone_resource_parent = os.path.dirname(pkg_share_description)
+    drone_resource_parent = os.path.dirname(pkg_description_share)
 
     set_env_vars_resources = AppendEnvironmentVariable(
         'GZ_SIM_RESOURCE_PATH',
@@ -27,7 +49,7 @@ def generate_launch_description():
 
     robot_description_content = Command(['xacro ', xacro_file_path])
 
-    robot_description_params = {'robot_description': robot_description_content, 'use_sim_time': True}
+    robot_description_params = {'robot_description': robot_description_content, 'use_sim_time': use_sim_time}
 
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
@@ -40,8 +62,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(pkg_ros_gz_sim, 'launch', 'gz_sim.launch.py')
         ),
-        # '-r' means start paused; 'empty.sdf' is the standard world
-        launch_arguments=[('gz_args', ' -r -v 3 empty.sdf')]
+        launch_arguments=[('gz_args', [' -r -v 4 ', world])]
     )
 
     start_gazebo_ros_spawner_cmd = Node(
@@ -50,15 +71,20 @@ def generate_launch_description():
         output='screen',
         arguments=[
             '-topic', 'robot_description',
-            '-name', 'my_drone',
+            '-name', 'drone',
             '-allow_renaming', 'true',
             '-z', '0.1'
         ]
     )
 
-    return LaunchDescription([
-        set_env_vars_resources,
-        start_gazebo_cmd,
-        robot_state_publisher_node,
-        start_gazebo_ros_spawner_cmd
-    ])
+    ld = LaunchDescription()
+
+    ld.add_action(declare_world_cmd)
+    ld.add_action(declare_sim_time_cmd)
+
+    ld.add_action(set_env_vars_resources)
+    ld.add_action(start_gazebo_cmd)
+    ld.add_action(robot_state_publisher_node)
+    ld.add_action(start_gazebo_ros_spawner_cmd)
+
+    return ld
