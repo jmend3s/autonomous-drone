@@ -33,7 +33,7 @@ void DroneTeensyEmulator::TeensyEmulator::Configure(gz::sim::Entity const& entit
     _entity = entity;
     _controlPeriod /= _updateRate;
 
-    gzmsg << "[TeensyEmulator] Configure() done" << std::endl;
+    gzmsg << "[TeensyEmulator] Configuration done" << std::endl;
 }
 
 void DroneTeensyEmulator::TeensyEmulator::PreUpdate(const gz::sim::UpdateInfo& info,

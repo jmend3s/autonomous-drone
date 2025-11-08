@@ -51,7 +51,7 @@ def generate_launch_description():
 
     declare_rviz_cfg_cmd = DeclareLaunchArgument(
         name='rviz_cfg',
-        default_value=os.path.join(pkg_rviz_share, 'rviz', 'display.rviz'),
+        default_value=os.path.join(pkg_rviz_share, 'rviz', 'bringup.display.rviz'),
         description='Path to RViz2 configurations'
     )
 

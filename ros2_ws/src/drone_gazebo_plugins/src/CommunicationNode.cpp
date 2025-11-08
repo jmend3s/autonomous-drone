@@ -32,7 +32,7 @@ geometry_msgs::msg::Twist CommunicationNode::read()
 void CommunicationNode::publish(gz::math::Vector3d const& position,
     gz::math::Quaterniond const& orientation,
     gz::math::Vector3d const& linearVelocity,
-    gz::math::Vector3d const& angularVelocity)
+    gz::math::Vector3d const& angularVelocity) const
 {
     nav_msgs::msg::Odometry odometryMessage;
 
@@ -55,11 +55,11 @@ void CommunicationNode::publish(gz::math::Vector3d const& position,
     odometryMessage.twist.twist.angular.y = angularVelocity.Y();
     odometryMessage.twist.twist.angular.z = angularVelocity.Z();
 
-    _odometryPublisher->publish(odometryMessage);
     broadcast(position, orientation);
+    _odometryPublisher->publish(odometryMessage);
 }
 
-void CommunicationNode::broadcast(gz::math::Vector3d const& position, gz::math::Quaterniond const& orientation)
+void CommunicationNode::broadcast(gz::math::Vector3d const& position, gz::math::Quaterniond const& orientation) const
 {
     geometry_msgs::msg::TransformStamped transformStamped;
     transformStamped.header.stamp = _node->get_clock()->now();

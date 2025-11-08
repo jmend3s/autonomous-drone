@@ -7,7 +7,6 @@
 #include <gz/sim/System.hh>
 #include <gz/sim/Joint.hh>
 
-#include <geometry_msgs/msg/twist.hpp>
 #include <rclcpp/rclcpp.hpp>
 
 

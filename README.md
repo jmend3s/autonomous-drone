@@ -59,10 +59,11 @@ ros2_ws/
  - Go to project root ```cd autonomous-drone/```
  - Build the docker image ```./docker/build.sh``` <br>
  - Start container ```./docker/run.sh``` **refer to the documentation on the script to use without Terminator and xdotool** <br>
- - **Inside the container** build and source workspace ```colcon build && . install/setup.bash``` or use the alias ```build``` (which also moves to the workspace root) <br>
- - Launch RViz2 ```ros2 launch drone_description drone.display.launch.py``` <br>
- - Launch Gazebo ```ros2 launch drone_gazebo drone.gazebo.launch.py``` <br>
-**Be sure to run all the Docker scripts on the project's root**
+ - **Inside the container** build and source workspace ```colcon build && . install/setup.bash``` or alias ```build``` (which also moves to the workspace root) <br>
+ - Launch RViz2 ```ros2 launch drone_description drone.display.launch.py``` or alias ```display``` <br>
+ - Launch Gazebo ```ros2 launch drone_gazebo drone.gazebo.launch.py``` or alias ```simulation``` <br>
+ - Bringup the whole simulation environment ```ros2 launch drone_bringup drone.bringup.launch.py``` or alias ```drone``` <br>
+**Be sure to run all the Docker scripts from the project's root**
 
 ---
 ### Teensy Flight Control

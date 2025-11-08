@@ -20,10 +20,10 @@ public:
     void publish(gz::math::Vector3d const& position,
         gz::math::Quaterniond const& orientation,
         gz::math::Vector3d const& linearVelocity,
-        gz::math::Vector3d const& angularVelocity);
+        gz::math::Vector3d const& angularVelocity) const;
 
 private:
-    void broadcast(gz::math::Vector3d const& position, gz::math::Quaterniond const& orientation);
+    void broadcast(gz::math::Vector3d const& position, gz::math::Quaterniond const& orientation) const;
 
     rclcpp::Node::SharedPtr _node;
     rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr _odometryPublisher;
