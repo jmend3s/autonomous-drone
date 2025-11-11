@@ -85,5 +85,18 @@
       <shadows>false</shadows>
     </scene>
 
+    <spherical_coordinates>
+        <!-- WGS-84 reference ellipsoid -->
+        <surface_model>EARTH_WGS84</surface_model>
+
+        <!-- Set origin of the world -->
+        <latitude_deg>37.4219999</latitude_deg>     <!-- choose any starting point -->
+        <longitude_deg>-122.0840575</longitude_deg>
+        <elevation>0.0</elevation>
+
+        <!-- Heading of +X axis relative to East -->
+        <heading_deg>0.0</heading_deg>
+    </spherical_coordinates>
+
   </world>
 </sdf>

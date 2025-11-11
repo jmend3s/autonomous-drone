@@ -24,6 +24,7 @@ RUN apt-get update \
     ros-jazzy-ros-gz-sim \
     ros-jazzy-gz-ros2-control \
     ros-jazzy-gz-ros2-control-demos \
+    ros-jazzy-robot-localization \
     ros-jazzy-ros2-control \
     ros-jazzy-ros2-controllers \
     ros-jazzy-rmw-cyclonedds-cpp \

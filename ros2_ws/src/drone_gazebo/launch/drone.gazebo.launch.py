@@ -17,7 +17,6 @@ def generate_launch_description():
     pkg_name = 'drone_gazebo'
     pkg_share = get_package_share_directory(pkg_name)
 
-
     world = LaunchConfiguration('world')
     use_sim_time = LaunchConfiguration('use_sim_time')
 
@@ -65,7 +64,7 @@ def generate_launch_description():
         launch_arguments=[('gz_args', [' -r -v 4 ', world])]
     )
 
-    start_gazebo_ros_spawner_cmd = Node(
+    start_gazebo_ros_spawner_node = Node(
         package='ros_gz_sim',
         executable='create',
         output='screen',
@@ -77,6 +76,16 @@ def generate_launch_description():
         ]
     )
 
+    ros_gazebo_bridge_node = Node(
+            package='ros_gz_bridge',
+            executable='parameter_bridge',
+            arguments=[
+                '/drone/imu@sensor_msgs/msg/Imu@gz.msgs.IMU',
+                '/drone/gps@sensor_msgs/msg/NavSatFix@gz.msgs.NavSat',
+            ],
+            output='screen',
+        )
+
     ld = LaunchDescription()
 
     ld.add_action(declare_world_cmd)
@@ -85,6 +94,7 @@ def generate_launch_description():
     ld.add_action(set_env_vars_resources)
     ld.add_action(start_gazebo_cmd)
     ld.add_action(robot_state_publisher_node)
-    ld.add_action(start_gazebo_ros_spawner_cmd)
+    ld.add_action(start_gazebo_ros_spawner_node)
+    ld.add_action(ros_gazebo_bridge_node)
 
     return ld

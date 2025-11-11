@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<robot name="drone" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <gazebo reference="base_link">
+        <sensor name="imu" type="imu">
+            <update_rate>200</update_rate>
+            <always_on>true</always_on>
+            <topic>/drone/imu</topic>
+            <imu>
+                <angular_velocity>true</angular_velocity>
+                <linear_acceleration>true</linear_acceleration>
+            </imu>
+            <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu"/>
+        </sensor>
+    </gazebo>
+
+    <gazebo reference="base_link">
+        <sensor name="gps_sensor" type="navsat">
+            <update_rate>10</update_rate>
+            <always_on>true</always_on>
+            <topic>/drone/gps</topic>
+            <plugin name="gz::sim::systems::NavSat" filename="gz-sim-navsat-system"/>
+        </sensor>
+    </gazebo>
+
+</robot>
