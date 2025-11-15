@@ -40,16 +40,16 @@ This project aims to develop a modular and autonomous drone platform with the fo
 ### Project Structure
 
 ```
-clion_scripts/                # Clion realated scripts for ROS 2 integration
-docker/                       # Dockerfile and helper scripts
-docs/                         # Diagrams and documentation
-flight-controller/            # Teensy firmware (submodule)
-printables/                   # 3D models
+clion_scripts/                  # Clion realated scripts for ROS 2 integration
+docker/                         # Dockerfile and helper scripts
+docs/                           # Diagrams and documentation
+flight-controller/              # Teensy firmware (submodule)
+printables/                     # 3D models
 ros2_ws/
 ├── src/
-│ ├── drone_description/      # URDF and meshes
-│ ├── drone_gazebo/           # Simulation plugins and worlds
-│ └── drone_gazebo_plugins/   # Custom Gazebo plugins
+│   ├── drone_description/      # URDF and meshes
+│   ├── drone_gazebo/           # Simulation plugins and worlds
+│   └── drone_gazebo_plugins/   # Custom Gazebo plugins
 ```
 
 ---
@@ -79,7 +79,8 @@ inside Gazebo using a custom plugin (in development).
 - [x] Docker development environment setup
 - [x] ROS 2 Jazzy workspace created
 - [x] Drone URDF and Gazebo world defined
-- [ ] Gazebo plugin for Teensy flight controller emulation
+- [x] Gazebo plugin for Teensy flight controller emulation
+- [ ] Simulate sensor data
 - [ ] ROS 2 controller for BLDC motors
 - [ ] Integration of IMU data in simulation
 
