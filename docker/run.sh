@@ -54,3 +54,13 @@ xdotool key ctrl+shift+o
 sleep 0.1
 xdotool type "docker exec -it $CONTAINER_NAME bash -c 'source /opt/ros/jazzy/setup.bash; [ -f /$WORKSPACE_DIR/install/setup.bash ] && source /$WORKSPACE_DIR/install/setup.bash; exec bash'"
 xdotool key Return
+
+xdotool key ctrl+shift+e
+sleep 0.1
+xdotool type "docker exec -it $CONTAINER_NAME bash -c 'source /opt/ros/jazzy/setup.bash; [ -f /$WORKSPACE_DIR/install/setup.bash ] && source /$WORKSPACE_DIR/install/setup.bash; exec bash'"
+xdotool key Return
+
+xdotool key ctrl+shift+o
+sleep 0.1
+xdotool type "docker exec -it $CONTAINER_NAME bash -c 'source /opt/ros/jazzy/setup.bash; [ -f /$WORKSPACE_DIR/install/setup.bash ] && source /$WORKSPACE_DIR/install/setup.bash; exec bash'"
+xdotool key Return

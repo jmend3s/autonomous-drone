@@ -87,10 +87,10 @@ inside Gazebo using a custom plugin (in development).
 ---
 ### Hardware <br>
 
-- Frame: F450 quadcopter  
-- Companion computer: Raspberry Pi 5  
-- Flight controller: [Teensy Flight Controller](https://github.com/jmend3s/flight-controller)  
-- Motors: A2212 1400 KV BLDC × 4  
-- ESCs: 40 A × 4
-- Propellers: 8045 × 4
-- Battery: LiPo 3S 5200 mAh  
+- **Frame:** F450 quadcopter  
+- **Companion computer:** Raspberry Pi 5  
+- **Flight controller:** [Teensy Flight Controller](https://github.com/jmend3s/flight-controller)  
+- **Motors**: A2212 1400 KV BLDC × 4  
+- **ESCs**: 40 A × 4
+- **Propellers**: 8045 × 4
+- **Battery**: LiPo 3S 5200 mAh  
