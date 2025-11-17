@@ -9,6 +9,8 @@ CommunicationNode::CommunicationNode()
     rclcpp::init(argc, argv);
 
     _node = rclcpp::Node::make_shared("teensy_emulator_communications");
+    rclcpp::Parameter const sim_param("use_sim_time", true);
+    _node->set_parameter(sim_param);
     _odometryPublisher = _node->create_publisher<nav_msgs::msg::Odometry>("/drone/odometry", 10);
     _commandSubscription = _node->create_subscription<geometry_msgs::msg::Twist>(
         "cmd_vel",
@@ -64,7 +66,7 @@ void CommunicationNode::broadcast(gz::math::Vector3d const& position, gz::math::
     geometry_msgs::msg::TransformStamped transformStamped;
     transformStamped.header.stamp = _node->get_clock()->now();
     transformStamped.header.frame_id = "odom";
-    transformStamped.child_frame_id = "base_footprint";
+    transformStamped.child_frame_id = "base_link";
 
     transformStamped.transform.translation.x = position.X();
     transformStamped.transform.translation.y = position.Y();
