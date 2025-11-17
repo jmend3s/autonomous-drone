@@ -77,15 +77,15 @@ def generate_launch_description():
         condition=IfCondition(use_rviz)
     )
 
-    ld = LaunchDescription()
+    launch_description = LaunchDescription()
 
-    ld.add_action(declare_gazebo_cmd)
-    ld.add_action(declare_rviz_cmd)
-    ld.add_action(declare_sim_time_cmd)
-    ld.add_action(declare_world_cmd)
-    ld.add_action(declare_rviz_cfg_cmd)
+    launch_description.add_action(declare_gazebo_cmd)
+    launch_description.add_action(declare_rviz_cmd)
+    launch_description.add_action(declare_sim_time_cmd)
+    launch_description.add_action(declare_world_cmd)
+    launch_description.add_action(declare_rviz_cfg_cmd)
 
-    ld.add_action(gazebo_launch_cmd)
-    ld.add_action(rviz_launch_cmd)
+    launch_description.add_action(gazebo_launch_cmd)
+    launch_description.add_action(rviz_launch_cmd)
 
-    return ld
+    return launch_description

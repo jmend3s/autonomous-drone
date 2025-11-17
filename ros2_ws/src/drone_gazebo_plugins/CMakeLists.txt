@@ -6,16 +6,15 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 find_package(ament_cmake REQUIRED)
-#find_package(gz-math8 REQUIRED)
+find_package(geometry_msgs REQUIRED)
 find_package(gz-msgs10 REQUIRED)
 find_package(gz-plugin2 REQUIRED COMPONENTS register)
-find_package(gz-transport13 REQUIRED)
 find_package(gz-sim8 REQUIRED)
-find_package(rclcpp REQUIRED)
+find_package(gz-transport13 REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
-find_package(geometry_msgs REQUIRED)
 
 include_directories(${GZ-SIM_INCLUDE_DIRS})
 
@@ -32,15 +31,15 @@ target_include_directories(TeensyEmulator PRIVATE
 find_package(gz-plugin2 REQUIRED COMPONENTS register)
 
 ament_target_dependencies(TeensyEmulator
-  rclcpp
-  std_msgs
-  nav_msgs
   geometry_msgs
-  tf2_ros
   gz-sim8
   gz-msgs10
   gz-plugin2
   gz-transport13
+  nav_msgs
+  rclcpp
+  std_msgs
+  tf2_ros
 )
 
 install(TARGETS TeensyEmulator
