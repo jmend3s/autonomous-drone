@@ -1,6 +1,4 @@
 
-#!/usr/bin/env python3
-
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
@@ -14,7 +12,7 @@ import os
 def generate_launch_description():
 
     pkg_path = get_package_share_directory('drone_state_estimation')
-    ekf = os.path.join(pkg_path, 'config', 'ekf.yaml')
+    ekf_path = os.path.join(pkg_path, 'config', 'ekf.yaml')
 
     use_sim_time = LaunchConfiguration('use_sim_time')
 
@@ -25,35 +23,35 @@ def generate_launch_description():
     )
 
     efk_local_node = Node(
-        package = 'robot_localization',
-        executable = 'ekf_node',
-        name = 'ekf_local',
-        output = 'screen',
-        parameters = [ ekf, { 'use_sim_time': use_sim_time } ],
-        remappings = [ ('/odometry/filtered', '/odometry/local') ]
+        package='robot_localization',
+        executable='ekf_node',
+        name='ekf_local',
+        output='screen',
+        parameters=[ekf_path, {'use_sim_time': use_sim_time}],
+        remappings=[ ('/odometry/filtered', '/odometry/filtered') ]
     )
 
     navsat_transform_node = Node(
-        package = 'robot_localization',
-        executable = 'navsat_transform_node',
-        name = 'navsat_transform',
-        output = 'screen',
-        parameters = [ ekf, { 'use_sim_time': use_sim_time } ],
-        remappings = [
+        package='robot_localization',
+        executable='navsat_transform_node',
+        name='navsat_transform',
+        output='screen',
+        parameters=[ekf_path, {'use_sim_time': use_sim_time}],
+        remappings=[
             ('/imu', '/imu/data'),
             ('/gps/fix', '/gps/fix'),
-            ('/odometry/filtered', '/odometry/local'),
-            ('/gps/odom', '/gps/odom'),
+            ('/odometry/filtered', '/odometry/filtered'),
+            ('odometry/gps', 'odometry/gps_navsat')
         ]
     )
 
     efk_global_node = Node(
-        package = 'robot_localization',
-        executable = 'ekf_node',
-        name = 'ekf_global',
-        output = 'screen',
-        parameters = [ ekf, { 'use_sim_time': use_sim_time } ],
-        remappings=[ ('/odometry/filtered', '/odometry/global') ]
+        package='robot_localization',
+        executable='ekf_node',
+        name='ekf_global',
+        output='screen',
+        parameters=[ekf_path, {'use_sim_time': use_sim_time}],
+        remappings=[ ('/odometry/filtered', '/odometry/filtered/global') ]
     )
 
     launch_description = LaunchDescription()
