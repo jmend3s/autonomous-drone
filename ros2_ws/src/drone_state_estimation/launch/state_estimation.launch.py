@@ -32,18 +32,18 @@ def generate_launch_description():
     )
 
     navsat_transform_node = Node(
-        package='robot_localization',
-        executable='navsat_transform_node',
-        name='navsat_transform',
-        output='screen',
-        parameters=[ekf_path, {'use_sim_time': use_sim_time}],
-        remappings=[
-            ('/imu', '/imu/data'),
-            ('/gps/fix', '/gps/fix'),
-            ('/odometry/filtered', '/odometry/filtered'),
-            ('odometry/gps', 'odometry/gps_navsat')
-        ]
-    )
+    package='robot_localization',
+    executable='navsat_transform_node',
+    name='navsat_transform',
+    output='screen',
+    parameters=[ekf_path],
+    remappings=[
+        ('/imu', '/imu/data'),
+        ('/gps/fix', '/gps/fix'),
+        ('/odometry/filtered', '/odometry/filtered'),
+        ('/odometry/gps', '/odometry/gps_navsat')
+    ]
+)
 
     efk_global_node = Node(
         package='robot_localization',

@@ -1,10 +1,12 @@
 ekf_local:
   ros__parameters:
+    use_sim_time: true           # add this (sim)
     frequency: 50.0
     sensor_timeout: 0.5
     two_d_mode: false
     publish_tf: true
-    map_frame: map
+
+    # Local filter should live in odom only
     odom_frame: odom
     base_link_frame: base_link
     world_frame: odom
@@ -22,7 +24,7 @@ ekf_local:
     odom0_config: [ true,  true,  true,      # position x y z
                     false, false, false,     # orientation (IMU already gives it)
                     true,  true,  true,      # linear velocity
-                    false, false, false ]     # angular velocity
+                    false, false, false ]    # angular velocity
 
     publish_state: true
     publish_acceleration: false
@@ -35,7 +37,7 @@ navsat_transform:
     wait_for_transform: true
     base_link_frame: base_link
     odom_frame: odom
-    world_frame: map
+    world_frame: map          # OK even if you don’t use map as fixed frame yet
 
     magnetic_declination_radians: 0.0
     yaw_offset: 0.0
@@ -45,41 +47,38 @@ navsat_transform:
     wait_for_datum: false
 
     publish_filtered_gps: true
-    filtered_gps_topic: "/odometry/gps_navsat"
-
-    gps0: /odometry/gps
-    gps0_config: [ true, true, true,
-                   false, false, false,
-                   false, false, false,
-                   false, false, false ]
 
 ekf_global:
   ros__parameters:
     use_sim_time: true
     frequency: 10.0
     sensor_timeout: 0.2
-    two_d_mode: false
+    two_d_mode: true          # <-- make the global filter 2D
     publish_tf: true
 
+    # Standard frames
     map_frame: map
     odom_frame: odom
     base_link_frame: base_link
-    world_frame: odom
+    world_frame: map          # <-- global filter should use map as world frame
 
+    # IMU: only yaw and yaw rate (no roll/pitch, no linear accel)
     imu0: /imu/data
-    imu0_config: [false, false, false,
-                  true,  true,  true,
-                  false, false, false,
-                  true,  true,  true,
-                  false, false, false]
+    imu0_config: [false, false, false,   # x y z position
+                  false, false, true,    # roll pitch yaw (use yaw only)
+                  false, false, false,   # linear velocity
+                  false, false, true,    # angular velocity (yaw rate)
+                  false, false, false]   # linear acceleration (ignore)
+
     imu0_differential: false
     imu0_remove_gravitational_acceleration: true
 
+    # GPS odometry from navsat (x,y only)
     odom0: /odometry/gps_navsat
-    odom0_config: [true, true, false,     # ← disable Z
-                   false, false, false,
-                   false, false, false,
-                   false, false, false]
+    odom0_config: [true,  true,  false,   # position x y (no z)
+                   false, false, false,   # orientation
+                   false, false, false,   # linear velocity
+                   false, false, false]   # angular velocity
     odom0_relative: false
 
     publish_state: true
