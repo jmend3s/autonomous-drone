@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # ========================================================================
 # Autonomous Drone Docker Container Starter Script
 # ========================================================================
@@ -10,10 +11,11 @@
 # sudo apt install terminator
 # sudo apt install xdotool
 
+
 set -e
 
-CONTAINER_NAME="drone-jazzy-dev"
 IMAGE_NAME="drone-jazzy-dev"
+CONTAINER_NAME="$IMAGE_NAME"
 WORKSPACE_DIR="ros2_ws"
 WORKSPACE_PATH="$PWD/$WORKSPACE_DIR"
 USER_NAME="jmendes"
