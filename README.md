@@ -8,7 +8,9 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 This repository contains the ROS 2 simulation, description, and development environment for the Autonomous Drone project. <br>
-An IoT-enabled autonomous drone platform for surveillance, search and rescue missions. Integrating ROS2, Gazebo simulation and onboard flight control
+An IoT-enabled autonomous drone platform for surveillance, search and rescue missions. Integrating ROS2, Gazebo simulation and onboard flight control.
+
+For more detailed information please visit [Autonomous Drone Wiki](https://github.com/jmend3s/autonomous-drone/wiki)
 
 ---
 ### Project Objectives
@@ -66,12 +68,12 @@ ros2_ws/
 **Be sure to run all the Docker scripts from the project's root**
 
 ---
-### Teensy Flight Control
+### Flight Control
 
-The [Teensy Flight Controller](https://github.com/jmend3s/flight-controller)
+The [Flight Controller](https://github.com/jmend3s/flight-controller)
 submodule handles low-level motor control, sensor reading, and hardware communication.
 It interfaces with the ROS 2 companion computer through serial and can also be emulated
-inside Gazebo using a custom plugin (in development).
+inside Gazebo using a custom plugin.
 
 ---
 ### Current Status
@@ -80,7 +82,7 @@ inside Gazebo using a custom plugin (in development).
 - [x] ROS 2 Jazzy workspace created
 - [x] Drone URDF and Gazebo world defined
 - [x] Gazebo plugin for Teensy flight controller emulation
-- [ ] Simulate sensor data
+- [x] Simulate sensor data
 - [ ] ROS 2 controller for BLDC motors
 - [ ] Integration of IMU data in simulation
 
@@ -89,7 +91,7 @@ inside Gazebo using a custom plugin (in development).
 
 - **Frame:** F450 quadcopter  
 - **Companion computer:** Raspberry Pi 5  
-- **Flight controller:** [Teensy Flight Controller](https://github.com/jmend3s/flight-controller)  
+- **Flight controller:** [Flight Controller](https://github.com/jmend3s/flight-controller)  
 - **Motors**: A2212 1400 KV BLDC × 4  
 - **ESCs**: 40 A × 4
 - **Propellers**: 8045 × 4
