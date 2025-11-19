@@ -1,6 +1,6 @@
 
-#ifndef __TEENSY_EMULATOR_H__
-#define __TEENSY_EMULATOR_H__
+#ifndef __FLIGHT_CONTROL_EMULATOR_H__
+#define __FLIGHT_CONTROL_EMULATOR_H__
 
 #include "CommunicationNode.h"
 
@@ -10,17 +10,17 @@
 #include <rclcpp/rclcpp.hpp>
 
 
-namespace DroneTeensyEmulator
+namespace DroneFlightControlEmulator
 {
-    class TeensyEmulator final
+    class FlightControlEmulator final
         : public gz::sim::System
         , public gz::sim::ISystemConfigure
         , public gz::sim::ISystemPreUpdate
         , public gz::sim::ISystemPostUpdate
     {
     public:
-        TeensyEmulator();
-        ~TeensyEmulator() override;
+        FlightControlEmulator();
+        ~FlightControlEmulator() override;
 
         void Configure(gz::sim::Entity const& entity, std::shared_ptr<sdf::Element const> const& sdf,
             gz::sim::EntityComponentManager& ecm, gz::sim::EventManager& eventMgr) override;

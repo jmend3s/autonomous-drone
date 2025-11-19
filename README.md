@@ -72,7 +72,7 @@ ros2_ws/
 
 The [Flight Controller](https://github.com/jmend3s/flight-controller)
 submodule handles low-level motor control, sensor reading, and hardware communication.
-It interfaces with the ROS 2 companion computer through serial and can also be emulated
+It interfaces with the ROS 2 companion computer through serial and is also be emulated
 inside Gazebo using a custom plugin.
 
 ---

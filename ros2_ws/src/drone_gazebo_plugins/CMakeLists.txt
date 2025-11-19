@@ -18,19 +18,19 @@ find_package(tf2_ros REQUIRED)
 
 include_directories(${GZ-SIM_INCLUDE_DIRS})
 
-add_library(TeensyEmulator SHARED
-  src/TeensyEmulator.cpp
+add_library(FlightControlEmulator SHARED
+    src/FlightControlEmulator.cpp
   src/CommunicationNode.cpp
 )
 
-set_property(TARGET TeensyEmulator PROPERTY CXX_STANDARD 17)
-target_include_directories(TeensyEmulator PRIVATE
+set_property(TARGET FlightControlEmulator PROPERTY CXX_STANDARD 17)
+target_include_directories(FlightControlEmulator PRIVATE
   ${GZ-SIM_INCLUDE_DIRS}
 )
 
 find_package(gz-plugin2 REQUIRED COMPONENTS register)
 
-ament_target_dependencies(TeensyEmulator
+ament_target_dependencies(FlightControlEmulator
   geometry_msgs
   gz-sim8
   gz-msgs10
@@ -42,7 +42,7 @@ ament_target_dependencies(TeensyEmulator
   tf2_ros
 )
 
-install(TARGETS TeensyEmulator
+install(TARGETS FlightControlEmulator
   DESTINATION lib
 )
 

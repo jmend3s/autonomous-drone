@@ -3,7 +3,7 @@
 <package format="3">
   <name>drone_gazebo_plugins</name>
   <version>0.0.0</version>
-  <description>Package containing gazebo plugins: TeensyEmulator</description>
+  <description>Package containing gazebo plugins: FlightControlEmulator</description>
   <maintainer email="jmendes.3595@gmail.com">jmendes</maintainer>
   <license>BSD-3-Clause</license>
 

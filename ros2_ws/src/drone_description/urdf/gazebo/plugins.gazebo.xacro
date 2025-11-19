@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="drone" xmlns:xacro="http://www.ros.org/wiki/xacro">
     <gazebo>
-        <plugin filename="libTeensyEmulator.so" name="TeensyEmulator">
+        <plugin filename="libFlightControlEmulator.so" name="FlightControlEmulator">
             <damping>0.1</damping>
             <gravity>9.81</gravity>
             <thrust_command>9.81</thrust_command>

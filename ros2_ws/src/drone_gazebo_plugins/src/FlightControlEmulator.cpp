@@ -1,12 +1,12 @@
 
-#include "TeensyEmulator.h"
+#include "FlightControlEmulator.h"
 
 #include <gz/plugin/Register.hh>
 #include <gz/sim/Model.hh>
 #include <gz/sim/Util.hh>
 
 
-DroneTeensyEmulator::TeensyEmulator::TeensyEmulator()
+DroneFlightControlEmulator::FlightControlEmulator::FlightControlEmulator()
     : _entity(gz::sim::kNullEntity)
     , _position(0, 0, 1.0)
     , _linearVelocity(0, 0, 0)
@@ -20,12 +20,12 @@ DroneTeensyEmulator::TeensyEmulator::TeensyEmulator()
 {
 }
 
-DroneTeensyEmulator::TeensyEmulator::~TeensyEmulator()
+DroneFlightControlEmulator::FlightControlEmulator::~FlightControlEmulator()
 {
     rclcpp::shutdown();
 }
 
-void DroneTeensyEmulator::TeensyEmulator::Configure(gz::sim::Entity const& entity,
+void DroneFlightControlEmulator::FlightControlEmulator::Configure(gz::sim::Entity const& entity,
     std::shared_ptr<sdf::Element const> const& sdf, gz::sim::EntityComponentManager& ecm,
     gz::sim::EventManager& eventMgr)
 {
@@ -33,10 +33,10 @@ void DroneTeensyEmulator::TeensyEmulator::Configure(gz::sim::Entity const& entit
     _entity = entity;
     _controlPeriod /= _updateRate;
 
-    gzmsg << "[TeensyEmulator] Configuration done" << std::endl;
+    gzmsg << "[FlightControlEmulator] Configuration done" << std::endl;
 }
 
-void DroneTeensyEmulator::TeensyEmulator::PreUpdate(const gz::sim::UpdateInfo& info,
+void DroneFlightControlEmulator::FlightControlEmulator::PreUpdate(const gz::sim::UpdateInfo& info,
     gz::sim::EntityComponentManager& ecm)
 {
     if (!info.paused)
@@ -66,13 +66,13 @@ void DroneTeensyEmulator::TeensyEmulator::PreUpdate(const gz::sim::UpdateInfo& i
     }
 }
 
-void DroneTeensyEmulator::TeensyEmulator::PostUpdate(const gz::sim::UpdateInfo& info,
+void DroneFlightControlEmulator::FlightControlEmulator::PostUpdate(const gz::sim::UpdateInfo& info,
     const gz::sim::EntityComponentManager& ecm)
 {
     _communicationNode.publish(_position, _orientation, _linearVelocity, _angularVelocity);
 }
 
-void DroneTeensyEmulator::TeensyEmulator::extractValuesFromSdf(std::shared_ptr<sdf::Element const> const& sdf)
+void DroneFlightControlEmulator::FlightControlEmulator::extractValuesFromSdf(std::shared_ptr<sdf::Element const> const& sdf)
 {
     std::map<std::string, double&> sdfElements = {
         { "damping" , _damping },
@@ -88,10 +88,10 @@ void DroneTeensyEmulator::TeensyEmulator::extractValuesFromSdf(std::shared_ptr<s
 }
 
 GZ_ADD_PLUGIN(
-    DroneTeensyEmulator::TeensyEmulator,
+    DroneFlightControlEmulator::FlightControlEmulator,
     gz::sim::System,
-    DroneTeensyEmulator::TeensyEmulator::ISystemConfigure,
-    DroneTeensyEmulator::TeensyEmulator::ISystemPreUpdate,
-    DroneTeensyEmulator::TeensyEmulator::ISystemPostUpdate
+    DroneFlightControlEmulator::FlightControlEmulator::ISystemConfigure,
+    DroneFlightControlEmulator::FlightControlEmulator::ISystemPreUpdate,
+    DroneFlightControlEmulator::FlightControlEmulator::ISystemPostUpdate
 )
-GZ_ADD_PLUGIN_ALIAS(DroneTeensyEmulator::TeensyEmulator, "TeensyEmulator")
+GZ_ADD_PLUGIN_ALIAS(DroneFlightControlEmulator::FlightControlEmulator, "FlightControlEmulator")
