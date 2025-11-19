@@ -1,6 +1,4 @@
 
-#!/usr/bin/env python3
-
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
@@ -39,7 +37,6 @@ def generate_launch_description():
     )
 
     robot_description = ParameterValue(Command(["xacro ", LaunchConfiguration("model")]), value_type=str)
-
     robot_state_publisher = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
@@ -58,13 +55,13 @@ def generate_launch_description():
         parameters=[{'use_sim_time': use_sim_time}]
     )
 
-    ld = LaunchDescription()
+    launch_description = LaunchDescription()
 
-    ld.add_action(declare_sim_time_cmd)
-    ld.add_action(declare_rviz_cfg)
+    launch_description.add_action(declare_sim_time_cmd)
+    launch_description.add_action(declare_rviz_cfg)
 
-    ld.add_action(model_arg)
-    ld.add_action(robot_state_publisher)
-    ld.add_action(rviz_node)
+    launch_description.add_action(model_arg)
+    launch_description.add_action(robot_state_publisher)
+    launch_description.add_action(rviz_node)
 
-    return ld
+    return launch_description

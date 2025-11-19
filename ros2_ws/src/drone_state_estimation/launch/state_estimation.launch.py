@@ -12,10 +12,11 @@ import os
 
 def generate_launch_description():
 
-    pkg_path = get_package_share_directory('drone_state_estimation')
-    ekf_local_path = os.path.join(pkg_path, 'config', 'ekf_local.yaml')
-    ekf_global_path = os.path.join(pkg_path, 'config', 'ekf_global.yaml')
-    navsat_transform_path = os.path.join(pkg_path, 'config', 'navsat_transform.yaml')
+    pkg_name = 'drone_state_estimation'
+    pkg_share_directory = get_package_share_directory(pkg_name)
+    ekf_local_path = os.path.join(pkg_share_directory, 'config', 'ekf_local.yaml')
+    ekf_global_path = os.path.join(pkg_share_directory, 'config', 'ekf_global.yaml')
+    navsat_transform_path = os.path.join(pkg_share_directory, 'config', 'navsat_transform.yaml')
 
     use_ekf_local = LaunchConfiguration('use_ekf_local')
     use_navsat_transform = LaunchConfiguration('use_navsat_transform')
@@ -82,7 +83,7 @@ def generate_launch_description():
             ekf_global_path,
             {'use_sim_time': use_sim_time}
         ],
-        remappings=[ ('/odometry/filtered', '/odometry/filtered/global') ],
+        remappings=[('/odometry/filtered', '/odometry/filtered/global')],
         condition = IfCondition(use_ekf_global)
     )
 
