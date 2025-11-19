@@ -10,16 +10,21 @@ set -e
 WORKDIR="ros2_ws"
 ROBOT_NAME="drone"
 USER="jmendes"
+USER_EMAIL="jmendes.3595@gmail.com"
+USER_HOME="/home/$USER"
+BASHRC_PATH="$USER_HOME/.bashrc"
+WS_PATH="$USER_HOME/$WORKDIR"
 
 {
-  echo "alias build=\"cd /home/$USER/$WORKDIR && colcon build && source ~/.bashrc\""
-  echo "alias create-pkg=\"ros2 pkg create --license BSD-3-Clause --build-type ament_cmake --maintainer-email jmendes.3595@gmail.com --maintainer-name jmendes\""
+  echo "alias build=\"cd $WS_PATH && colcon build && source $BASHRC_PATH\""
+  echo "alias create-pkg=\"ros2 pkg create --license BSD-3-Clause --build-type ament_cmake --maintainer-email $USER_EMAIL --maintainer-name $USER\""
+  echo "alias $ROBOT_NAME=\"$WS_PATH/src/${ROBOT_NAME}_bringup/scripts/${ROBOT_NAME}_bringup.sh\""
 
-  echo "alias $ROBOT_NAME=\"ros2 launch drone_bringup drone.bringup.launch.py\""
-  echo "alias display=\"ros2 launch drone_description drone.display.launch.py\""
-  echo "alias simulation=\"ros2 launch drone_gazebo drone.gazebo.launch.py\""
+  echo "alias display=\"ros2 launch ${ROBOT_NAME}_description ${ROBOT_NAME}.display.launch.py\""
+  echo "alias simulation=\"ros2 launch ${ROBOT_NAME}_gazebo ${ROBOT_NAME}.gazebo.launch.py\""
 
-  echo "export GZ_SIM_RESOURCE_PATH=/home/$USER/$WORKDIR/src/drone_gazebo/models:/home/$USER/$WORKDIR/src/drone_description/meshes:/home/$USER/$WORKDIR/src"
-  echo "export GZ_SIM_SYSTEM_PLUGIN_PATH=/home/$USER/$WORKDIR/install/drone_gazebo_sim/lib/"
-} >> /home/$USER/.bashrc
+  echo "export GZ_SIM_RESOURCE_PATH=$WS_PATH/src/${ROBOT_NAME}_gazebo/models:$WS_PATH/src/${ROBOT_NAME}_description/meshes:$WS_PATH/src"
+  echo "export GZ_SIM_SYSTEM_PLUGIN_PATH=$WS_PATH/install/${ROBOT_NAME}_gazebo_sim/lib/"
+} >> "$BASHRC_PATH"
+
 exec "$@"
