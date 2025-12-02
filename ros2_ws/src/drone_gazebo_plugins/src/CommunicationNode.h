@@ -12,7 +12,6 @@
 #include <sensor_msgs/msg/imu.hpp>
 
 
-
 class CommunicationNode
 {
 public:

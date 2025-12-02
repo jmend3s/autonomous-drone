@@ -36,12 +36,12 @@ gz::math::Vector4d AttitudeController::update(
     return { motorA, motorB, motorC, motorD };
 }
 
-void AttitudeController::setHoverThrottle(double throttle)
+void AttitudeController::setHoverThrottle(double const throttle)
 {
     _hoverThrottle = throttle;
 }
 
-double AttitudeController::clamp(double const value)
+double AttitudeController::clamp(double const value) const
 {
     return std::clamp(value, 0.0, 1.0);
 }

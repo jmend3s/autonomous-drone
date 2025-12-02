@@ -41,7 +41,7 @@ public:
     void setHoverThrottle(double throttle);
 
 private:
-    double clamp(double value);
+    double clamp(double value) const;
 
     PID _rollRate;
     PID _pitchRate;

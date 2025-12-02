@@ -60,8 +60,8 @@ void DroneFlightControlEmulator::FlightControlEmulator::PreUpdate(const gz::sim:
             auto motorOutputs = _attitudeController.update(_angularVelocity, _targetRates, dt);
             _position += _linearVelocity * dt;
 
-            gzmsg << "Motors: " << motorOutputs[0] << ", " << motorOutputs[1]
-                << ", " << motorOutputs[2] << ", " << motorOutputs[3] << std::endl;
+            // gzmsg << "Motors: " << motorOutputs[0] << ", " << motorOutputs[1]
+            //     << ", " << motorOutputs[2] << ", " << motorOutputs[3] << std::endl;
 
 
             if (auto const angle = _angularVelocity.Length() * dt;
