@@ -3,6 +3,8 @@
 
 
 CommunicationNode::CommunicationNode()
+    : _gyro(0.0, 0.0, 0.0)
+    , _orientation(1.0, 0.0, 0.0, 0.0)
 {
     int constexpr argc = 0;
     char** const argv = nullptr;
@@ -19,6 +21,14 @@ CommunicationNode::CommunicationNode()
         {
             std::scoped_lock lock(_commandMutex);
             _lastCommand = *message;
+        });
+
+    _imuSubscription = _node->create_subscription<sensor_msgs::msg::Imu>(
+        "/imu/data",
+        rclcpp::SensorDataQoS(),
+        [this](sensor_msgs::msg::Imu::SharedPtr const message)
+        {
+            onImuMessage(message);
         });
 
     _tfBroadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(_node);
@@ -61,6 +71,16 @@ void CommunicationNode::publish(gz::math::Vector3d const& position,
     _odometryPublisher->publish(odometryMessage);
 }
 
+gz::math::Vector3d CommunicationNode::getGyro() const
+{
+    return _gyro;
+}
+
+gz::math::Quaterniond CommunicationNode::getOrientation() const
+{
+    return _orientation;
+}
+
 void CommunicationNode::broadcast(gz::math::Vector3d const& position, gz::math::Quaterniond const& orientation) const
 {
     geometry_msgs::msg::TransformStamped transformStamped;
@@ -77,4 +97,18 @@ void CommunicationNode::broadcast(gz::math::Vector3d const& position, gz::math::
     transformStamped.transform.rotation.w = orientation.W();
 
     _tfBroadcaster->sendTransform(transformStamped);
+}
+
+void CommunicationNode::onImuMessage(sensor_msgs::msg::Imu::SharedPtr const& message)
+{
+    _gyro = gz::math::Vector3d(
+        message->angular_velocity.x,
+        message->angular_velocity.y,
+        message->angular_velocity.z);
+
+    _orientation = gz::math::Quaterniond(
+        message->orientation.w,
+        message->orientation.x,
+        message->orientation.y,
+        message->orientation.z);
 }

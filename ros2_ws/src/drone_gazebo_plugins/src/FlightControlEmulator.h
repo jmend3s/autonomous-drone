@@ -2,10 +2,10 @@
 #ifndef __FLIGHT_CONTROL_EMULATOR_H__
 #define __FLIGHT_CONTROL_EMULATOR_H__
 
+#include "AttitudeController.h"
 #include "CommunicationNode.h"
 
 #include <gz/sim/System.hh>
-#include <gz/sim/Joint.hh>
 
 #include <rclcpp/rclcpp.hpp>
 
@@ -32,10 +32,12 @@ namespace DroneFlightControlEmulator
 
         gz::sim::Entity _entity;
         CommunicationNode _communicationNode;
+        AttitudeController _attitudeController;
 
-        gz::math::Vector3d _position;
-        gz::math::Vector3d _linearVelocity;
         gz::math::Vector3d _angularVelocity;
+        gz::math::Vector3d _linearVelocity;
+        gz::math::Vector3d _position;
+        gz::math::Vector3d _targetRates;
         gz::math::Quaternion<double> _orientation;
 
         double _damping;

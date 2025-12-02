@@ -13,15 +13,21 @@ find_package(gz-sim8 REQUIRED)
 find_package(gz-transport13 REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
 
 include_directories(${GZ-SIM_INCLUDE_DIRS})
 
-add_library(FlightControlEmulator SHARED
+add_library(FlightControlEmulator
+  SHARED
+    src/AttitudeController.cpp
     src/FlightControlEmulator.cpp
-  src/CommunicationNode.cpp
+    src/CommunicationNode.cpp
+    src/Dynamics.cpp
 )
+
+#add_subdirectory(src)
 
 set_property(TARGET FlightControlEmulator PROPERTY CXX_STANDARD 17)
 target_include_directories(FlightControlEmulator PRIVATE
@@ -38,6 +44,7 @@ ament_target_dependencies(FlightControlEmulator
   gz-transport13
   nav_msgs
   rclcpp
+  sensor_msgs
   std_msgs
   tf2_ros
 )

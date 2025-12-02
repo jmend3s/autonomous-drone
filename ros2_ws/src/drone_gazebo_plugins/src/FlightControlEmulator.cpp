@@ -8,13 +8,13 @@
 
 DroneFlightControlEmulator::FlightControlEmulator::FlightControlEmulator()
     : _entity(gz::sim::kNullEntity)
-    , _position(0, 0, 1.0)
-    , _linearVelocity(0, 0, 0)
     , _angularVelocity(0, 0, 0)
-    , _orientation(0, 0, 0)
+    , _linearVelocity(0, 0, 0)
+    , _position(0, 0, 1.0)
+    , _orientation(0, 0, 0, 1)
     , _damping(0.0)
     , _gravity(0.0)
-    , _thrustCommand(0.0)
+    , _thrustCommand(0.5)
     , _controlPeriod(1.0)
     , _updateRate(0.0)
 {
@@ -33,6 +33,13 @@ void DroneFlightControlEmulator::FlightControlEmulator::Configure(gz::sim::Entit
     _entity = entity;
     _controlPeriod /= _updateRate;
 
+    if (_updateRate > 0.0)
+    {
+        _controlPeriod = 1.0 / _updateRate;
+    }
+
+    _attitudeController.setHoverThrottle(_thrustCommand);
+
     gzmsg << "[FlightControlEmulator] Configuration done" << std::endl;
 }
 
@@ -43,13 +50,19 @@ void DroneFlightControlEmulator::FlightControlEmulator::PreUpdate(const gz::sim:
     {
         auto command = _communicationNode.read();
 
+        _targetRates = { command.angular.x, command.angular.y, command.angular.z };
         _linearVelocity = { command.linear.x, command.linear.y, command.linear.z };
         _angularVelocity = { command.angular.x, command.angular.y, command.angular.z };
 
         if (auto const dt = std::chrono::duration<double>(info.dt).count();
             dt > 0.0)
         {
+            auto motorOutputs = _attitudeController.update(_angularVelocity, _targetRates, dt);
             _position += _linearVelocity * dt;
+
+            gzmsg << "Motors: " << motorOutputs[0] << ", " << motorOutputs[1]
+                << ", " << motorOutputs[2] << ", " << motorOutputs[3] << std::endl;
+
 
             if (auto const angle = _angularVelocity.Length() * dt;
                 angle > 1e-6)
