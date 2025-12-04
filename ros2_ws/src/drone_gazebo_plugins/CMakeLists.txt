@@ -24,7 +24,6 @@ add_library(FlightControlEmulator
     src/AttitudeController.cpp
     src/FlightControlEmulator.cpp
     src/CommunicationNode.cpp
-    src/Dynamics.cpp
 )
 
 #add_subdirectory(src)

@@ -11,6 +11,10 @@ CommunicationNode::CommunicationNode()
     rclcpp::init(argc, argv);
 
     _node = rclcpp::Node::make_shared("teensy_emulator_communications");
+
+    rclcpp::Parameter sim_param("use_sim_time", true);
+    _node->set_parameter(sim_param);
+
     _odometryPublisher = _node->create_publisher<nav_msgs::msg::Odometry>("/drone/odom", 10);
     _commandSubscription = _node->create_subscription<geometry_msgs::msg::Twist>(
         "cmd_vel",
@@ -109,4 +113,9 @@ void CommunicationNode::onImuMessage(sensor_msgs::msg::Imu::SharedPtr const& mes
         message->orientation.x,
         message->orientation.y,
         message->orientation.z);
+    if (!_orientation.IsFinite())
+    {
+        // fall back to identity if IMU sends garbage
+        _orientation = gz::math::Quaterniond::Identity;
+    }
 }
